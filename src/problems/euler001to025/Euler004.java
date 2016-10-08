@@ -3,7 +3,8 @@ package problems.euler001to025;
 import problems.Problem;
 
 /**
- * Problem 4: Find the largest palindrome made from the product of two 3-digit numbers.
+ * Problem 4:
+ * Find the largest palindrome made from the product of two 3-digit numbers.
  *
  * Solved by Sage on 10/7/16.
  */

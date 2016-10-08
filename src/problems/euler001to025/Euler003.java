@@ -3,7 +3,8 @@ package problems.euler001to025;
 import problems.Problem;
 
 /**
- * Problem 3: What is the largest prime factor of the number 600851475143
+ * Problem 3:
+ * What is the largest prime factor of the number 600851475143
  *
  * Solved by Sage on 10/7/16.
  */
