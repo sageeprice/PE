@@ -6,4 +6,6 @@ Currently I am only providing Java solutions, using JDK 8. I will not upload a s
 
 At some point I'll probably start writing up solutions on my [home page](sage-price.com), but until then there is sparse javadoc on some problems to explain my thought process.
 
+You can find me on PE at [SageEuler](https://projecteuler.net/progress=SageEuler).
+
 -_Sage_
