@@ -3,7 +3,10 @@ package problems.euler001to025;
 import problems.Problem;
 
 /**
- * Created by Sage on 10/8/16.
+ * Problem 14:
+ * Which starting number, under one million, produces the longest Collatz chain?
+ *
+ * Solved by Sage on 10/8/16.
  */
 public class Euler014 implements Problem {
 
