@@ -3,7 +3,10 @@ package problems.euler025to050;
 import problems.Problem;
 
 /**
- * Created by Sage on 10/16/16.
+ * Problem 27:
+ * https://projecteuler.net/problem=27
+ *
+ * Solved by Sage on 10/16/16.
  */
 public class Euler027 implements Problem {
 
