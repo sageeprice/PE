@@ -38,7 +38,7 @@ public class Euler041 implements Problem {
     /**
      * Returns whether x is prime or not
      * @param x
-     * @return
+     * @return is x prime
      */
     private boolean isPrime(int x) {
 
@@ -57,7 +57,7 @@ public class Euler041 implements Problem {
     /**
      * Returns whether a and b collectively contain every digit 1 through 9 once each
      * @param a some positive integer
-     * @return do a and b together contain every digit 1 through 9 once
+     * @return does a contain every digit 1 through
      */
     private boolean isPandigital(int a) {
         char[] number = String.valueOf(a).toCharArray();
