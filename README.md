@@ -4,6 +4,6 @@ This repository serves to hold my solutions to ProjectEuler problems. I was moti
 
 Currently I am only working in Java 8. I will try to optimize solutions until they run in less than a second. Not gonna nitpick about being more performant than that on what is a fun side project for me.
 
-At some point I may start writing up solutions to the more interesting problems on my [home page](sage-price.com), but until then there is sparse javadoc on some problems to explain my thought process.
+At some point I may start writing up solutions to the more interesting problems, but until then there is sparse javadoc on some problems to explain my thought process.
 
 -_Sage_
