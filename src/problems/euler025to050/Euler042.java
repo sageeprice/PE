@@ -8,7 +8,10 @@ import java.util.HashSet;
 import java.util.Set;
 
 /**
- * Created by Sage on 10/23/16.
+ * Problem 42:
+ * https://projecteuler.net/problem=42
+ *
+ * Solved by Sage on 10/23/16.
  */
 public class Euler042 implements Problem {
 
