@@ -5,7 +5,10 @@ import problems.Problem;
 import java.util.Arrays;
 
 /**
- * Created by Sage on 10/23/16.
+ * Problem 43:
+ * https://projecteuler.net/problem=43
+ *
+ * Solved by Sage on 10/23/16.
  */
 public class Euler043 implements Problem {
 
