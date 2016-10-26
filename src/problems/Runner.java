@@ -1,6 +1,6 @@
 package problems;
 
-import problems.euler025to050.Euler050;
+import problems.euler051to075.Euler051;
 
 /**
  * Created by Sage on 10/7/16.
@@ -9,7 +9,7 @@ public class Runner {
 
     public static void main(String[] args) {
         long startTime = System.currentTimeMillis();
-        System.out.println(new Euler050().solve());
+        System.out.println(new Euler051().solve());
         System.out.println("Time to compute was " + (System.currentTimeMillis()-startTime) + " milliseconds.");
     }
 }
