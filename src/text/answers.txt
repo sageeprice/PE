@@ -51,3 +51,8 @@
 51.  121313
 52.  142857
 53.  4075
+54.         // Previously solved, need to fix current implementation
+55.  249
+56.  972
+57.  153
+58.  26241
