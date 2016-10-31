@@ -16,16 +16,6 @@ public class Euler064 implements Problem {
     @Override
     public String solve() {
 
-//        Set<Triple> list = new HashSet<>();
-//        list.add(new Triple(1,2,3));
-//        if (list.contains(new Triple(1,2,3))) {
-//            System.out.println("Success!");
-//            return null;
-//        } else {
-//            System.out.println("Failure!");
-//            return null;
-//        }
-
         int total = 0;
 
         for (int j = 2; j <= 10000; j++) {
@@ -80,7 +70,7 @@ public class Euler064 implements Problem {
     /**
      * A class to represent a triple of integers, hashCode has risk of collisions
      */
-    class Triple {
+    private class Triple {
         int x;
         int y;
         int z;
