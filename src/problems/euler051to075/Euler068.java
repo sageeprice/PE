@@ -71,16 +71,19 @@ public class Euler068 implements Problem {
     private String serializeStructure(Integer[] arr1, Integer[] arr2) {
         StringBuilder serializer = new StringBuilder();
 
+        // Gotta start with the smallest element of the outer ring
         int start;
         for (start = 0; start < arr1.length; start++) {
-            if (arr1[start] == 6)
+            if (arr1[start] == SIZE + 1)
                 break;
         }
+
         for (int i = 0; i < arr1.length; i++) {
             serializer.append(arr1[(start + i) % arr1.length]);
             serializer.append(arr2[(start + i) % arr1.length]);
             serializer.append(arr2[(start + i + 1) % arr1.length]);
         }
+
         return serializer.toString();
     }
 
@@ -118,6 +121,7 @@ public class Euler068 implements Problem {
             if (options[i] == EMPTY) {
                 continue;
             }
+
             array[index] = options[i];
             options[i] = EMPTY;
             generateOrderings(index + 1, array, orderings, options);
