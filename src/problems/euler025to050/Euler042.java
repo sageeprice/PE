@@ -15,7 +15,7 @@ import java.util.Set;
  */
 public class Euler042 implements Problem {
 
-    private static final String FILE_NAME = "p042_words.txt";
+    private static final String FILE_NAME = "src/text/p042_words.txt";
     private static final String SPLITTER = ",";
 
     @Override

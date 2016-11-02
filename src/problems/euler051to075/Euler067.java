@@ -14,7 +14,7 @@ import java.io.FileReader;
 public class Euler067 implements Problem {
 
     private static final int SIZE = 100;
-    private static final String FILE_NAME = "p067_triangle.txt";
+    private static final String FILE_NAME = "src/text/p067_triangle.txt";
     private static final String SPLITTER = " ";
     private long[][] PYRAMID = new long[SIZE][SIZE];
 

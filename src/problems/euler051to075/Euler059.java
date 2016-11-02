@@ -32,7 +32,7 @@ import java.io.FileReader;
  */
 public class Euler059 implements Problem {
 
-    private static final String FILE_NAME = "p059_cipher.txt";
+    private static final String FILE_NAME = "src/text/p059_cipher.txt";
     private static final String SPLITTER = ",";
 
     // The three most common English letters, lower case ASCII values

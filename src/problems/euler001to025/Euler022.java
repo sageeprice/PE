@@ -14,7 +14,7 @@ import java.util.Arrays;
  */
 public class Euler022 implements Problem {
 
-    private static final String FILE_NAME = "p022_names.txt";
+    private static final String FILE_NAME = "src/text/p022_names.txt";
     private static final String SPLITTER = ",";
 
     @Override
