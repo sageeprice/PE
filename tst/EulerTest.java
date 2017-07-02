@@ -29,10 +29,30 @@ import problems.impl.Euler027;
 import problems.impl.Euler028;
 import problems.impl.Euler029;
 import problems.impl.Euler030;
+import problems.impl.Euler031;
+import problems.impl.Euler032;
+import problems.impl.Euler033;
+import problems.impl.Euler034;
+import problems.impl.Euler035;
+import problems.impl.Euler036;
+import problems.impl.Euler037;
+import problems.impl.Euler038;
+import problems.impl.Euler039;
+import problems.impl.Euler040;
+import problems.impl.Euler041;
+import problems.impl.Euler042;
+import problems.impl.Euler043;
+import problems.impl.Euler044;
+import problems.impl.Euler045;
+import problems.impl.Euler046;
+import problems.impl.Euler047;
+import problems.impl.Euler048;
+import problems.impl.Euler049;
+import problems.impl.Euler050;
 
 import static junit.framework.TestCase.assertEquals;
 
-/** Tests to verify problems complete successfully. */
+/** Tests to verify problems complete successfully. Only fast tests (<1 seconds). */
 public class EulerTest {
 
     @Test
@@ -67,5 +87,25 @@ public class EulerTest {
         assertEquals(new Euler028().solve(), "669171001");
         assertEquals(new Euler029().solve(), "9183");
         assertEquals(new Euler030().solve(), "443839");
+        assertEquals(new Euler031().solve(), "73682");
+        assertEquals(new Euler032().solve(), "45228");
+        assertEquals(new Euler033().solve(), "100");
+        assertEquals(new Euler034().solve(), "40730");
+        assertEquals(new Euler035().solve(), "55");
+        assertEquals(new Euler036().solve(), "872187");
+        assertEquals(new Euler037().solve(), "748317");
+        assertEquals(new Euler038().solve(), "932718654");
+        assertEquals(new Euler039().solve(), "840");
+        assertEquals(new Euler040().solve(), "210");
+        assertEquals(new Euler041().solve(), "7652413");
+        assertEquals(new Euler042().solve(), "162");
+        assertEquals(new Euler043().solve(), "16695334890");
+        assertEquals(new Euler044().solve(), "5482660");
+        assertEquals(new Euler045().solve(), "1533776805");
+        assertEquals(new Euler046().solve(), "5777");
+        assertEquals(new Euler047().solve(), "134043");
+        assertEquals(new Euler048().solve(), "9110846700");
+        assertEquals(new Euler049().solve(), "296962999629");
+        assertEquals(new Euler050().solve(), "997651");
      }
 }

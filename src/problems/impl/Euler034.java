@@ -19,7 +19,6 @@ public class Euler034 implements Problem {
 
         for (int i = 10; i < LIMIT; i++) {
             if (digFacSum(i) == i) {
-                System.out.println(i);
                 sum += i;
             }
         }
