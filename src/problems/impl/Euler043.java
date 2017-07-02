@@ -1,4 +1,4 @@
-package problems.euler025to050;
+package problems.impl;
 
 import problems.Problem;
 

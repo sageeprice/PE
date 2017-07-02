@@ -2,7 +2,7 @@ package problems.reallyOld;
 
 import java.util.Map;
 
-import UsefulForMath.Erastosthenes;
+import errata.Erastosthenes;
 
 /**
  * Correct: 232792560

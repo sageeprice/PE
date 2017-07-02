@@ -1,7 +1,5 @@
 package problems.reallyOld;
 
-import org.apache.log4j.BasicConfigurator;
-import org.apache.log4j.Logger;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
@@ -22,8 +20,6 @@ public class Problem99LargestExponential {
         long x,y;
         int bestLine = 0;
         int lineIndex = 1;
-        Logger logger = Logger.getLogger(Problem99LargestExponential.class);
-        BasicConfigurator.configure();
 
         for (String line : Files.readAllLines(Paths.get("C:\\Users\\Sage\\workspace\\SageKatas\\eulerTxtFiles\\p099_base_exp.txt"))) {
             String[] nums = line.split(",");
@@ -33,10 +29,10 @@ public class Problem99LargestExponential {
             if (prod > best) {
                 best = prod;
                 bestLine = lineIndex;
-                logger.info("New best encountered on line: " + bestLine);
+                System.out.println("New best encountered on line: " + bestLine);
             }
             lineIndex++;
         }
-        logger.info("Best line was: " + bestLine);
+        System.out.println("Best line was: " + bestLine);
     }
 }

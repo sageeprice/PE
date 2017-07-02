@@ -1,4 +1,4 @@
-package problems.euler051to075;
+package problems.impl;
 
 import javafx.util.Pair;
 import problems.Problem;

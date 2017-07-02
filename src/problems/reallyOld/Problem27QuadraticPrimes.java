@@ -1,6 +1,6 @@
 package problems.reallyOld;
 
-import UsefulForMath.Erastosthenes;
+import errata.Erastosthenes;
 
 /**
  * Correct: -59231

@@ -4,7 +4,7 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
-import UsefulForMath.Erastosthenes;
+import errata.Erastosthenes;
 
 /**
  * Correct: 31626

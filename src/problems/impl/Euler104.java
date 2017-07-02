@@ -1,4 +1,6 @@
-package problems.oldSolved;
+package problems.impl;
+
+import problems.Problem;
 
 import java.util.Arrays;
 
@@ -7,14 +9,15 @@ import java.util.Arrays;
  * only performed after finding a solution with correct terminating digits.
  * Answer: 329468
  */
-public class Problem104PandigitalFibonacciEnds {
+public class Euler104 implements Problem {
 
     private static final String DIGITS = "123456789";
     private static final long BILLION = 1_000_000_000;
     private static final double LOG_PHI = Math.log10((1 + Math.sqrt(5))/2.0);
     private static final double LOG_ROOT_FIVE = Math.log10(Math.sqrt(5));
 
-    public static void main(String[] args) {
+    @Override
+    public String solve() {
         long f1 = 1;
         long f2 = 1;
         long t;
@@ -37,8 +40,7 @@ public class Problem104PandigitalFibonacciEnds {
                 int leadingDigits = (int) Math.floor(Math.pow(10, lPow + 8));
                 System.out.println(leadingDigits);
                 if (isPandigital(String.valueOf(leadingDigits))) {
-                    System.out.println(count);
-                    break;
+                    return String.valueOf(count);
                 }
             }
         }

@@ -1,7 +1,6 @@
 package problems;
 
-import problems.euler101To125.Euler109;
-
+import problems.impl.Euler109;
 /**
  * Runner class to execute Project Euler solutions.
  */

@@ -2,7 +2,7 @@ package problems.reallyOld;
 
 import java.util.ArrayList;
 
-import UsefulForMath.Erastosthenes;
+import errata.Erastosthenes;
 
 public class Problem46GoldbachsOtherConjecture {
 	

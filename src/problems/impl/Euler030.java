@@ -1,4 +1,4 @@
-package problems.euler025to050;
+package problems.impl;
 
 import problems.Problem;
 
@@ -24,7 +24,6 @@ public class Euler030 implements Problem {
             // Lazy way to do it: iterate through all integers and evaluate.
             int digitalSum = String.valueOf(i).chars().map(d -> d - '0').map(d -> (int) Math.pow(d,POWER)).sum();
             if (i == digitalSum) {
-                System.out.println("Found solution: " + i);
                 sum += i;
             }
         }

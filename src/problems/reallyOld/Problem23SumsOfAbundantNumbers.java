@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import UsefulForMath.Erastosthenes;
+import errata.Erastosthenes;
 
 /**
  * Correct: 4179871

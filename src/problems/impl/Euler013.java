@@ -119,12 +119,11 @@ public class Euler013 implements Problem {
 
     @Override
     public String solve() {
-        BigInteger sum = new BigInteger("0");
+        BigInteger sum = BigInteger.ZERO;
 
         for (String s : NUMBERS) {
             sum = sum.add(new BigInteger(s));
         }
-        System.out.println(sum);
 
         return sum.toString().substring(0,10);
     }
