@@ -1,20 +1,22 @@
-package problems.oldSolved;
+package problems.impl;
+
+import problems.Problem;
 
 import java.util.HashSet;
 import java.util.Set;
 
 /**
  * Straightforward - precalculate the number of strictly enclosed lattice points,
- * then brute force check each arrangement.
+ * then brute force check each arrangement. 1.5 seconds.
  *
  * Answer: 694687
  */
-public class Problem504SquareInside {
+public class Euler504 implements Problem {
 
     private static final int LIMIT = 101;
 
-    public static void main(String[] args) {
-
+    @Override
+    public String solve() {
         int[][] strictLatticeCount = new int[LIMIT][LIMIT];
         Set<Integer> squares = new HashSet<>();
         for (int i = 1; i <= 3 * LIMIT; i++) {
@@ -42,7 +44,7 @@ public class Problem504SquareInside {
                 }
             }
         }
-        System.out.println(squareLattices);
+        return String.valueOf(squareLattices);
     }
 
     private static int getLatticeCount(int x, int y) {

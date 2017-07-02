@@ -1,4 +1,6 @@
-package problems.oldSolved;
+package problems.impl;
+
+import problems.Problem;
 
 /**
  * Answer is 21035. Super simple, sieve for primes then count up.
@@ -9,13 +11,14 @@ package problems.oldSolved;
  * So just grab the first prime satisfying the above. Even primes
  * can safely be skipped.
  */
-public class Problem123PrimeSquareRemainders {
+public class Euler123 implements Problem {
 
     // Arbitrary limit large enough to find the answer
     private static final int LIMIT = 500_000;
     private static final long TARGET = 10_000_000_000L;
 
-    public static void main(String[] args) {
+    @Override
+    public String solve() {
         boolean[] sieve = new boolean[LIMIT];
         for (int i = 2; i < LIMIT; i++) {
             sieve[i] = true;
@@ -31,11 +34,13 @@ public class Problem123PrimeSquareRemainders {
         for (int i = 2; i < LIMIT; i++) {
             if (sieve[i]) {
                 primeCount++;
-                if (primeCount % 2 == 1 && 2L * (long) primeCount * (long) i > TARGET) {
-                    System.out.println("Prime is " + i + " n is " + primeCount);
-                    break;
+                if (primeCount % 2 == 1
+                        && 2L * (long) primeCount * (long) i > TARGET) {
+                    return String.valueOf(primeCount);
                 }
             }
         }
+        // This won't be reached.
+        return null;
     }
 }

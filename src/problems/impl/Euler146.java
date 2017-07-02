@@ -1,4 +1,6 @@
-package problems.oldSolved;
+package problems.impl;
+
+import problems.Problem;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -7,25 +9,19 @@ import java.util.Set;
 
 /**
  * Super slow, should be sped up. Currently takes 2 minutes.
- * 676333270
+ *
+ * Answer: 676333270
  */
-public class Problem146PrimePattern {
+public class Euler146 implements Problem {
 
     private static final int LIMIT = 150_000_000;
-    private static boolean[] sieve;
-    private static Set<Integer> shouldBePrime = new HashSet<>();
-    private static final int[] MUST_BE_PRIME = {1, 3, 7, 9, 13, 27};
+   private static final int[] MUST_BE_PRIME = {1, 3, 7, 9, 13, 27};
     private static final int[] MUST_BE_COMPOSITE = {19, 21};
 
-    public static void main(String[] args) {
-        long startTime = System.currentTimeMillis();
-        shouldBePrime.add(1);
-        shouldBePrime.add(3);
-        shouldBePrime.add(7);
-        shouldBePrime.add(9);
-        shouldBePrime.add(13);
-        shouldBePrime.add(27);
+    private static boolean[] sieve;
 
+    @Override
+    public String solve() {
 
         sieve = sieveTo(LIMIT);
         List<Integer> primes = new ArrayList<>();
@@ -48,12 +44,11 @@ public class Problem146PrimePattern {
             }
         }
         for (long maybeAnswer : firstPass) {
-            if (fitsPattern(maybeAnswer*maybeAnswer, primes)) {
+            if (fitsPattern(maybeAnswer * maybeAnswer, primes)) {
                 answerSum += maybeAnswer;
             }
         }
-        System.out.println(answerSum);
-        System.out.println("Answer in " + (System.currentTimeMillis() - startTime));
+        return String.valueOf(answerSum);
     }
 
     private static boolean isEligible(long x) {

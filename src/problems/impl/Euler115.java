@@ -1,4 +1,6 @@
-package problems.oldSolved;
+package problems.impl;
+
+import problems.Problem;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,13 +8,13 @@ import java.util.List;
 /**
  * Answer is 168, score is 1053389. Same as problem 114.
  */
-public class Problem115CountingBlocks2 {
+public class Euler115 implements Problem {
 
     private static final int FILL = 50;
     private static final int LIMIT = 1_000_000;
 
-    public static void main(String[] args) {
-
+    @Override
+    public String solve() {
         List<List<Long>> fillCounts = new ArrayList<>();
         for (int i = 0; i <= FILL; i++) {
             List<Long> list = new ArrayList<>();
@@ -29,6 +31,6 @@ public class Problem115CountingBlocks2 {
             }
             index++;
         }
-        System.out.println("Done at index " + (FILL + index) + " with sum " + (fillCounts.get(0).get(index) + fillCounts.get(FILL).get(index)));
+        return String.valueOf(FILL + index);
     }
 }

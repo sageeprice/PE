@@ -1,14 +1,17 @@
-package problems.oldSolved;
+package problems.impl;
+
+import problems.Problem;
 
 /**
  * 2204. Not much to say after the geometry is done.
  */
-public class Problem587ConcaveTriangle {
+public class Euler587 implements Problem {
 
     private static final double AREA = 1 - Math.PI/4;
     private static final double FRACTION = .001;
 
-    public static void main(String[] args) {
+    @Override
+    public String solve() {
         for (int i = 2; ; i++) {
             double x = getX(i);
             // Area from y-axis to point of intersection.
@@ -19,8 +22,7 @@ public class Problem587ConcaveTriangle {
             double circleArea = Math.PI * (getTheta(x, i) / 2 / Math.PI);
             // Principle of inclusion-exclusion.
             if ((area1 + area2 - circleArea) / AREA < FRACTION) {
-                System.out.println(i);
-                break;
+                return String.valueOf(i);
             }
         }
     }

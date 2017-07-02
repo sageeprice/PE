@@ -1,4 +1,6 @@
-package problems.oldSolved;
+package problems.impl;
+
+import problems.Problem;
 
 /**
  * The prime in question must be a difference of cubes. Furthermore, factoring
@@ -6,11 +8,12 @@ package problems.oldSolved;
  * cubes. Check those within the range.
  * Answer: 173
  */
-public class Problem131PrimeCubePartners {
+public class Euler131 implements Problem {
 
     private static final int LIMIT = 1_000_000;
 
-    public static void main(String[] args) {
+    @Override
+    public String solve() {
         long answerCount = 0;
         for (int i = 1; ; i++) {
             // (i+1)^3 - i^3
@@ -22,7 +25,7 @@ public class Problem131PrimeCubePartners {
             if (isPrime(diff))
                 answerCount++;
         }
-        System.out.println(answerCount);
+        return String.valueOf(answerCount);
     }
 
     /**

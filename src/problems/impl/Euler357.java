@@ -1,19 +1,23 @@
-package problems.oldSolved;
+package problems.impl;
+
+import problems.Problem;
 
 import java.util.HashSet;
 import java.util.Set;
 import java.util.TreeSet;
 
 /**
- * Created by Sage on 6/15/2017.
+ * Slow, about 10 seconds.
+ *
+ * Answer: 1739023853137
  */
-public class Problem357PrimeGeneratingInts {
+public class Euler357 implements Problem {
 
     private static final int LIMIT = 100_000_000;
     private static final int ROOT_LIMIT = 10_000;
 
-    public static void main(String[] args) {
-        long startTime = System.currentTimeMillis();
+    @Override
+    public String solve() {
         boolean[] sieve = new boolean[LIMIT];
         for (int i = 2; i < LIMIT; i++) {
             sieve[i] = true;
@@ -59,7 +63,6 @@ public class Problem357PrimeGeneratingInts {
             }
         }
         sum += 1 + 2;
-        System.out.println("Total is: " + sum);
-        System.out.println(System.currentTimeMillis() - startTime);
+        return String.valueOf(sum);
     }
 }

@@ -1,18 +1,22 @@
-package problems.oldSolved;
+package problems.impl;
+
+import problems.Problem;
 
 import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Quick and easy. Better to generate them than to check every possibility.
+ * A tad slow, 2 seconds.
+ *
+ * Answer: 696067597313468
  */
-public class Problem387HarshadNumbers {
+public class Euler387 implements Problem {
 
     private static final long LIMIT = 100_000_000_000_000L;
 
-    public static void main(String[] args) {
-        long startTime = System.currentTimeMillis();
-
+    @Override
+    public String solve() {
         List<Long> maybeHarshads = new ArrayList<>();
         for (long i = 1; i < 10; i++) {
             maybeHarshads.add(i);
@@ -34,8 +38,7 @@ public class Problem387HarshadNumbers {
             }
         }
 
-        System.out.println(strongSum);
-        System.out.println("Execution time in millis is: " + (System.currentTimeMillis() - startTime));
+        return String.valueOf(strongSum);
     }
 
     /** Returns true iff x is prime. */

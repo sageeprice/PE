@@ -1,4 +1,6 @@
-package problems.oldSolved;
+package problems.impl;
+
+import problems.Problem;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -6,20 +8,17 @@ import java.util.Map;
 /**
  * Current impl works, but is too slow;
  */
-public class Problem549FactorialDivisibility {
+public class Euler549 implements Problem {
 
     private static final int LIMIT = 1000;
 
-    public static void main(String[] args) {
-        long startTime = System.currentTimeMillis();
-
+    @Override
+    public String solve() {
         long s = 0;
         for (int i = 2; i <= LIMIT; i++) {
             s += smallestFactorial(i);
-            System.out.println(i + ": " + smallestFactorial(i));
         }
-        System.out.println(s);
-        System.out.println("Execution time: " + (System.currentTimeMillis() - startTime));
+        return String.valueOf(s);
     }
 
     private static int smallestFactorial(int x) {

@@ -1,14 +1,18 @@
-package problems.oldSolved;
+package problems.impl;
+
+import problems.Problem;
 
 /**
- * Created by Sage on 6/12/2017.
+ * Dynamic programming.
+ *
+ * Answer: 1647564009
  */
-public class Problem114CountingBlocks1 {
+public class Euler114 implements Problem {
 
     private static final int LENGTH = 50;
 
-    public static void main(String[] args) {
-
+    @Override
+    public String solve() {
         long[] o = new long[LENGTH];
         long[] or = new long[LENGTH];
         long[] orr = new long[LENGTH];
@@ -26,6 +30,6 @@ public class Problem114CountingBlocks1 {
             r[i] = r[i-1] + orr[i-1];
         }
 
-        System.out.println("Total combos is: " + (o[LENGTH-1] + r[LENGTH-1]));
+        return String.valueOf(o[LENGTH-1] + r[LENGTH-1]);
     }
 }

@@ -1,4 +1,6 @@
-package problems.oldSolved;
+package problems.impl;
+
+import problems.Problem;
 
 /**
  * Consider the number of hexagons created by looking at points in the triangle
@@ -19,17 +21,17 @@ package problems.oldSolved;
  *
  * Answer: 265695031399260211
  */
-public class Problem577CountingHexagons {
+public class Euler577 implements Problem {
 
     private static final long LIMIT = 12345;
 
-    public static void main(String[] args) {
-
+    @Override
+    public String solve() {
         long sum = 0;
         for (long i = 3; i <= LIMIT; i++) {
             sum += hexagonCount(i);
         }
-        System.out.println(sum);
+        return String.valueOf(sum);
     }
 
     private static long hexagonCount(long x) {

@@ -1,17 +1,20 @@
-package problems.oldSolved;
+package problems.impl;
+
+import problems.Problem;
 
 import java.util.PriorityQueue;
 
 /**
  * Straightforward. Answer: 35407281
  */
-public class Problem500 {
+public class Euler500 implements Problem {
 
     private static final int MOD = 500_500_507;
     private static final int POWER = 500_500;
     private static final int PRIME_LIMIT = 15_000_000;
 
-    public static void main(String[] args) {
+    @Override
+    public String solve() {
         boolean[] sieve = sieveTo(PRIME_LIMIT, POWER);
 
         // Collect the first 500_000 primes into a less memory abusive array.
@@ -42,7 +45,7 @@ public class Problem500 {
             product %= MOD;
             primePowers.add(next * next);
         }
-        System.out.println(product);
+        return String.valueOf(product);
     }
 
     /**
