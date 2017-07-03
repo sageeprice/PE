@@ -1,15 +1,18 @@
-package problems.reallyOld;
+package problems.impl;
 
+import problems.Problem;
+
+import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
-public class Problem83PathSum4 {
+public class Euler083 implements Problem {
 
     private final static int MTRX_SIZE = 80;
-    private static final String FILE_NAME = "C:\\Users\\Sage\\workspace\\SageKatas\\eulerTxtFiles\\p083_matrix.txt";
+    private static final String FILE_NAME = "src/text/p083_matrix.txt";
 
-    public static void main(String[] args) throws Exception {
-
+    @Override
+    public String solve() {
         int[][] matrix = new int[MTRX_SIZE][MTRX_SIZE];
         int[][] route = new int[MTRX_SIZE][MTRX_SIZE];
         int moves = 0; // just run it a couple of times to get convergence
@@ -17,12 +20,16 @@ public class Problem83PathSum4 {
 
 
         int row = 0;
-        for (String line : Files.readAllLines(Paths.get(FILE_NAME))) {
-            String[] nums = line.split(",");
-            for (int i = 0; i < MTRX_SIZE; i++) {
-                route[row][i] = Integer.valueOf(nums[i]);
+        try {
+            for (String line : Files.readAllLines(Paths.get(FILE_NAME))) {
+                String[] nums = line.split(",");
+                for (int i = 0; i < MTRX_SIZE; i++) {
+                    route[row][i] = Integer.valueOf(nums[i]);
+                }
+                row++;
             }
-            row++;
+        } catch (IOException e) {
+            throw new RuntimeException("Failed to read file " + FILE_NAME);
         }
 
         for (int i = 0; i < MTRX_SIZE; i++) {
@@ -32,7 +39,6 @@ public class Problem83PathSum4 {
         }
 
         matrix[0][0] = route[0][0];
-        System.out.println(matrix[0][0]);
         while (moves < 4) {
             for (int i = 1; i < MTRX_SIZE; i++) {
                 // first row
@@ -69,12 +75,6 @@ public class Problem83PathSum4 {
             }
             moves++;
         }
-        for (int i = 0; i < MTRX_SIZE; i++) {
-            for (int j = 0; j < MTRX_SIZE; j++) {
-                System.out.print(matrix[i][j] + "\t");
-            }
-            System.out.println();
-        }
-        System.out.println("Answer is: " + matrix[MTRX_SIZE-1][MTRX_SIZE-1]);
+        return String.valueOf(matrix[MTRX_SIZE-1][MTRX_SIZE-1]);
     }
 }

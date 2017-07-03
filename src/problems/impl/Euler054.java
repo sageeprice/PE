@@ -11,23 +11,15 @@ import java.util.Map;
  * Problem 54:
  * https://projecteuler.net/problem=54
  *
- * WARNING: This is broken somewhere. Need to clean it up. Within 4 of the answer.
+ * Just plain ugly code. Needs to be refactored.
  *
  * Solved by Sage on 10/26/16.
  */
 public class Euler054 implements Problem {
 
-    private static final String FILE_NAME = "p054_poker.txt";
-
-    // Suits
-    private static final String SUITS = "CDHS";
-    private static final String CLUB = "C";
-    private static final String DIAMOND = "D";
-    private static final String HEART = "H";
-    private static final String SPADE = "S";
+    private static final String FILE_NAME = "src/text/p054_poker.txt";
 
     // Royals
-    private static final String ROYALS = "TJQKA";
     private static final char TEN = 'T';
     private static final char JACK = 'J';
     private static final char QUEEN = 'Q';
@@ -37,7 +29,7 @@ public class Euler054 implements Problem {
     // Map of char to value for cards
     private static final Map<Character, Integer> valueMap;
     static {
-        valueMap = new HashMap<Character, Integer>();
+        valueMap = new HashMap<>();
         valueMap.put('2', 2);
         valueMap.put('3', 3);
         valueMap.put('4', 4);
@@ -63,13 +55,10 @@ public class Euler054 implements Problem {
 
             String game;
             while ((game = reader.readLine()) != null) {
-                System.out.print("Winner of " + game.substring(0,14) + " versus " + game.substring(15) + " is ");
                 int winner = getWinner(game.substring(0,14), game.substring(15));
                 if (winner > 0) {
                     playerOneWins++;
-                    System.out.println(" player 1");
-                } else
-                    System.out.println(" player 2");
+                }
             }
 
         } catch (Exception e) {
@@ -96,22 +85,18 @@ public class Euler054 implements Problem {
 
         // Straight flushes
         if ((oneF && oneS) && (twoF && twoS)) {
-            return handOne.highCard > handTwo.highCard ? 1 : 2;
-        } else if ((oneF && oneS) && !(twoF && twoS)) {
+            return handOne.highCard - handTwo.highCard;
+        } else if (oneF && oneS) {
             return 1;
-        } else if (!(oneF && oneS) && (twoF && twoS)) {
+        } else if (twoF && twoS) {
             return -1;
         } // Four of a kind
         else if (handOne.four != handTwo.four) {
             return handOne.four - handTwo.four;
         } // FullHouse
-        else if (handOne.three != 0 && handTwo.pairOne != 0) {
-            if (handTwo.three != 0 && handTwo.pairOne != 0) {
-                return handOne.three - handTwo.three;
-            } else
-                return 1;
-        } else if (handTwo.three != 0 && handTwo.pairOne != 0) {
-            return -1;
+        else if ((handOne.three > 0 && handOne.pairOne > 0)
+                || (handTwo.three > 0 && handTwo.pairOne > 0)) {
+            return 15 * (handOne.three - handTwo.three) + (handOne.pairOne - handTwo.pairTwo);
         } // Flushes
         else if (handOne.isFlush() || handTwo.isFlush()){
             if (handOne.isFlush() && !handTwo.isFlush())
@@ -128,26 +113,12 @@ public class Euler054 implements Problem {
                 return 1;
         } else if (handTwo.isStraight()) {
             return -1;
-        } // Threes
-        else if (handOne.three != handTwo.three) {
-            return handOne.highCard - handTwo.highCard;
-        } // Pairs
-        else if (handOne.pairOne != 0) {
-            // Two pair
-            if (handOne.pairTwo != 0) {
-                if (handTwo.pairTwo == 0 || handTwo.pairOne < handOne.pairOne) {
-                    return 1;
-                } else {
-                    return handOne.pairTwo - handTwo.pairTwo;
-                }
-            } else if (handTwo.pairTwo != 0) {
-                return -1;
-            } else
-                return handOne.highCard - handTwo.highCard;
-        } else if (handTwo.pairOne > 0) {
-            return -1;
-        } else
-            return handOne.highCard - handTwo.highCard;
+        } // Threes, two pair, one pair, high card.
+        else
+            return 225 * 15 * (handOne.three - handTwo.three)
+                    + 225 * (handOne.pairTwo - handTwo.pairTwo)
+                    + 15 * (handOne.pairOne - handTwo.pairOne)
+                    + (handOne.highCard - handTwo.highCard);
     }
 
     private class Hand {
@@ -159,6 +130,7 @@ public class Euler054 implements Problem {
         int three;
         int pairOne;
         int pairTwo;
+        Boolean straight = null;
 
         Hand(String[] hand) {
             this.cardArray = new int[15];
@@ -188,6 +160,7 @@ public class Euler054 implements Problem {
                         break;
                     case 3:
                         three = i;
+                        break;
                     case 2:
                         if (pairOne > 0)
                             pairTwo = i;
@@ -201,27 +174,32 @@ public class Euler054 implements Problem {
         }
 
         public boolean isFlush() {
-            return this.flushSuit == null;
-        }
-
-        public int getHighCard() {
-            return this.highCard;
+            return this.flushSuit != null;
         }
 
         public boolean isStraight() {
+            if (straight != null) {
+                return straight;
+            }
             int start = 0;
             for (int i = 0; i < 15; i++) {
                 if (cardArray[i] != 0) {
                     start = i;
+                    break;
                 }
             }
-            if (start > 10)
-                return false;
-            for (int i = start+1; i < start+5; i++) {
-                if (cardArray[i] != 1)
-                    return false;
+            if (start > 10) {
+                straight = false;
+                return straight;
             }
-            return true;
+            for (int i = start+1; i < start+5; i++) {
+                if (cardArray[i] != 1) {
+                    straight = false;
+                    return straight;
+                }
+            }
+            straight = true;
+            return straight;
         }
     }
 

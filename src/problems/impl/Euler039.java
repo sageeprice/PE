@@ -12,6 +12,7 @@ public class Euler039 implements Problem {
 
     private static final int PERIM_LIMIT = 1000;
     private static final int SHORT_LIMIT = 292; // 1000 / (2 + sqrt(2))
+    private final int MIDDLE_LIMIT = (int) Math.sqrt(PERIM_LIMIT * PERIM_LIMIT - SHORT_LIMIT * SHORT_LIMIT);
 
     @Override
     public String solve() {
@@ -21,7 +22,7 @@ public class Euler039 implements Problem {
         // Simple bounds for the short side
         for (int a = 3; a <= SHORT_LIMIT; a++) {
             // Easy bounds for long side
-            for (int b = SHORT_LIMIT + 1; b <= Math.sqrt(PERIM_LIMIT*PERIM_LIMIT - SHORT_LIMIT*SHORT_LIMIT); b++) {
+            for (int b = SHORT_LIMIT + 1; b <= MIDDLE_LIMIT; b++) {
                 // Only one possible value for c at this point, but I'm lazy and there are few
                 // enough possible values where it is quick to check each of them
                 for (int c = b+1; c <= PERIM_LIMIT / 2; c++) {

@@ -13,18 +13,13 @@ public class Problem94AlmostEquilateral {
         long x;
         double y;
         long perimSum = 0;
-        System.out.println(Double.MAX_VALUE);
         for (long hypot = 5; hypot <= CAP/3; hypot += 2) {
             x = (hypot-1)/2;
             y = Math.sqrt(hypot*hypot - x*x);
             if (Math.floor(y) == Math.ceil(y)) {
                 if (x*x + y*y == hypot*hypot) {
-                    if (2 * (x + hypot) > CAP) {
-                        System.out.println("Breaking");
-                        break;
-                    }
-                    System.out.println("Minus one: " + x + ", " + y + ", " + hypot);
-                    System.out.println("Perimeter is: " + (2 * (x + hypot)));
+//                    System.out.println("Minus one: " + x + ", " + y + ", " + hypot);
+//                    System.out.println("Perimeter is: " + (2 * (x + hypot)));
                     perimSum += 2 * (x + hypot);
                     System.out.println("Current sum of perimeters is: " + perimSum);
                 }
@@ -33,14 +28,12 @@ public class Problem94AlmostEquilateral {
             y = Math.sqrt(hypot*hypot - x*x);
             if (Math.floor(y) == Math.ceil(y)) {
                 if (x*x + y*y == hypot*hypot) {
-                    if (2 * (x + hypot) > CAP) {
-                        System.out.println("should break");
-                        continue;
-                    }
-                    System.out.println("Plus one: " + x + ", " + y + ", " + hypot);
-                    System.out.println("Perimeter is: " + (2 * (x + hypot)));
+//                    System.out.println("Plus one: " + x + ", " + y + ", " + hypot);
+//                    System.out.println("Perimeter is: " + (2 * (x + hypot)));
                     perimSum += 2 * (x + hypot);
+                    System.out.println((2*x) + ", " + (long)y + ", " + hypot);
                     System.out.println("Current sum of perimeters is: " + perimSum);
+                    System.out.println("Hello");
                 }
             }
         }

@@ -16,19 +16,19 @@ public class Euler027 implements Problem {
     @Override
     public String solve() {
 
-        boolean[] isPrimeArray = sieveTo(SIEVE_SIZE);
+        boolean[] isPrime = sieveTo(SIEVE_SIZE);
 
         int mostConsecutivePrimes = 0;
         int ab = 0;
 
         for (int i = 2; i < BOUNDS; i++) {
-            if (isPrimeArray[i]) {
+            if (isPrime[i]) {
                 for (int a = 1-BOUNDS; a < BOUNDS; a++) {
                     int x = 0;
                     // Since we start at 0, b must always be prime, so use the current
                     // prime as our start point for b
                     int y = evaluate(x,a,i);
-                    while (y >= 0 && y < SIEVE_SIZE && isPrimeArray[y]) {
+                    while (y >= 0 && y < SIEVE_SIZE && isPrime[y]) {
                         x++;
                         y = evaluate(x,a,i);
                     }

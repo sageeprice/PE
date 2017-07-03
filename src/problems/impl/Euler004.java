@@ -37,12 +37,16 @@ public class Euler004 implements Problem {
 
     }
 
-    /**
-     * Just compare to the reverse. Easiest way to do it is with StringBuilder
-     * @param x number to check if palindromic
-     * @return x is [not] a palindrome
-     */
-    private boolean isPalindrome(int x) {
-        return new StringBuilder(String.valueOf(x)).reverse().toString().equals(String.valueOf(x));
+    // Note: only works for numbers between 100,000 and 1,000,000
+    private static boolean isPalindrome(int number) {
+        if (number % 10 == number / 100000) {
+            number = (number % 100000) / 10;
+            if (number % 10 == number / 1000) {
+                number = (number % 1000) / 10;
+                if (number % 10 == number / 10)
+                    return true;
+            }
+        }
+        return false;
     }
 }

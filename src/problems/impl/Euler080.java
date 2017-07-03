@@ -46,7 +46,12 @@ public class Euler080 implements Problem {
     //
     // https://en.wikipedia.org/wiki/Newton%27s_method#Square_root_of_a_number
     private BigDecimal newtonSqrt(BigDecimal x, BigDecimal sq) {
-        return x.subtract(x.multiply(x).subtract(sq).divide(TWO.multiply(x), 150, BigDecimal.ROUND_DOWN));
+        return x.subtract(
+                x.multiply(x)
+                        .subtract(sq)
+                        .divide(TWO.multiply(x),
+                                150,
+                                BigDecimal.ROUND_DOWN));
     }
 
 }

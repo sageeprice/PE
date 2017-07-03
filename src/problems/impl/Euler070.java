@@ -12,7 +12,7 @@ import java.util.Arrays;
  */
 public class Euler070 implements Problem {
 
-    private static final int LIMIT = 10000000;
+    private static final int LIMIT = 10_000_000;
 
     @Override
     public String solve() {
@@ -64,7 +64,29 @@ public class Euler070 implements Problem {
      * @return array of booleans
      */
     private boolean[] sieveTo(int x) {
-
+        boolean[] sieve = new boolean[x+1];
+        if (x >= 2) {
+            sieve[2] = true;
+        }
+        for (int i = 3; i <= x; i+=2) {
+            sieve[i] = true;
+        }
+        for (int i = 3; i <= Math.sqrt(x); i+= 2) {
+            if (sieve[i]) {
+                /**
+                 * Since you'll forget this Sage:
+                 *  - if it's less than i*i more than i, it'll be covered by a smaller prime
+                 *  - all primes > 2 are odd, so only need to check every other above i*i
+                 *  One improvement that could be made: technically only need to check
+                 *  of the form 6k+1 and 6k-1 (k an int), as 6k+3 is multiple of 3.
+                 */
+                for (int j = i * i; j <= x; j += i * 2) {
+                    sieve[j] = false;
+                }
+            }
+        }
+        return sieve;
+/*
         // Simple sieve implementation
         boolean[] isPrime = new boolean[x + 1];
 
@@ -81,5 +103,6 @@ public class Euler070 implements Problem {
         }
 
         return isPrime;
+        */
     }
 }

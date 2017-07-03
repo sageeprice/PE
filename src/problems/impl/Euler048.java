@@ -10,6 +10,8 @@ import problems.Problem;
  */
 public class Euler048 implements Problem {
 
+    private final long TEN_TO_THE_TEN = 10_000_000_000L;
+
     @Override
     public String solve() {
 
@@ -20,10 +22,10 @@ public class Euler048 implements Problem {
             long product = 1;
             for (long j = 1; j <= i; j++) {
                 product *= i;
-                product %= 10000000000L;
+                product %= TEN_TO_THE_TEN;
             }
             lastTen += product;
-            lastTen %= 10000000000L;
+            lastTen %= TEN_TO_THE_TEN;
         }
         return String.valueOf(lastTen);
     }

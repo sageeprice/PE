@@ -14,21 +14,47 @@ import java.util.Set;
  */
 public class Euler029 implements Problem {
 
+    private static final int BASE_POWER_COUNT = 99;
+    private static final int UNIQUE_POWER_NUMS = 81;
+
     @Override
     public String solve() {
-
-        // Have to use big integers due to overflow, 100^100 > Long.MAX_VALUE
-        Set<BigInteger> values = new HashSet();
-
-        for (long a = 2; a <= 100; a++) {
-            for (int b = 2; b <= 100; b++) {
-                BigInteger product = new BigInteger(String.valueOf(a));
-                product = product.pow(b);
-                if (!values.contains(product))
-                    values.add(product);
-            }
+        // Count of powers for 2 (covers 4, 8, 16, 32, 64).
+        int twoCount = BASE_POWER_COUNT;
+        for (int i = 101; i <= 600; i++) {
+            if (i < 201 && i % 2 == 0)
+                twoCount++;
+            else if (i < 301 && i % 3 == 0)
+                twoCount++;
+            else if (i < 401 && i % 4 == 0)
+                twoCount++;
+            else if (i < 501 && i % 5 == 0)
+                twoCount++;
+            else if (i < 601 && i % 6 == 0)
+                twoCount++;
         }
 
-        return String.valueOf(values.size());
+        // Count of powers for 3 (covers 9, 27, 81).
+        int threeCount = BASE_POWER_COUNT;
+        for (int i = 101; i <= 400; i++) {
+            if (i < 201 && i%2 == 0)
+                threeCount++;
+            else if (i < 301 && i%3 == 0)
+                threeCount++;
+            else if (i < 401 && i % 4 == 0)
+                threeCount++;
+        }
+
+        // Count of powers for 5, 6, 7, 10 (covers 25, 36, 49, 100).
+        int elseCount = BASE_POWER_COUNT;
+        for (int i = 101; i <= 200; i++) {
+            if (i < 201 && i%2 == 0)
+                elseCount++;
+        }
+
+        int overlapPower = twoCount + threeCount + 4 * elseCount;
+        int uniquePowers = BASE_POWER_COUNT * UNIQUE_POWER_NUMS;
+        return String.valueOf(overlapPower + uniquePowers);
     }
+
 }

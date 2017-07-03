@@ -17,6 +17,7 @@ public class Problem70TotientPermutation {
     private static final int CAP = 10000000;
 
     public static void main(String[] args) {
+        long st = System.currentTimeMillis();
         List<Integer> primeList = primeList(sieveTo((int)Math.sqrt(CAP)*2));
         double best = Double.MAX_VALUE;
         int n = 1;
@@ -33,6 +34,7 @@ public class Problem70TotientPermutation {
             }
         }
         System.out.println("Best was " + bestN + " with ratio " + best + " totient of " + totient(bestN, primeList));
+        System.out.println(System.currentTimeMillis() - st);
     }
 
     private static int totient(int n, List<Integer> primes) {

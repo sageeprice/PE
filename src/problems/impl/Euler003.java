@@ -10,43 +10,16 @@ import problems.Problem;
  */
 public class Euler003 implements Problem {
 
-    // FTA explanation goes here. Every number has a unique representation
-    // as the product of primes to powers.
-    private static final long NUMBER = 600851475143L;
-    private static final int SIEVE_SIZE = 10000;
-
+    private static final long NUM = 600851475143L;
     @Override
     public String solve() {
-
-        // Simple sieve implementation
-        // Magic number 10000 calculated retrospectively
-        boolean[] isPrime = new boolean[SIEVE_SIZE + 1];
-
-        long x = NUMBER;
-
-        for (int i = 2; i <= SIEVE_SIZE; i++) {
-            isPrime[i] = true;
+        long reducedNum = NUM;
+        int i = 3;
+        while (i < reducedNum) {
+            while (reducedNum % i == 0)
+                reducedNum /= i;
+            i += 2;
         }
-
-        for (int i = 2; i <= SIEVE_SIZE; i++) {
-            if (isPrime[i]) {
-                for (int j = 2; j * i <= SIEVE_SIZE; j++) {
-                    isPrime[j * i] = false;
-                }
-                // Divide prime out of NUMBER to accelerate process
-                // May need to be done repeatedly, e.g. 18 = 2 * 3 * 3
-                while (x % i == 0) {
-                    x /= i;
-
-                    // When we're at one, all prime factors have been
-                    // found, so return the current prime
-                    if (x == 1) {
-                        return String.valueOf(i);
-                    }
-                }
-            }
-        }
-
-        return null;
+        return String.valueOf(reducedNum);
     }
 }

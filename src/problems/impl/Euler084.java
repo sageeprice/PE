@@ -1,4 +1,12 @@
-package problems.reallyOld;
+package problems.impl;
+
+import problems.Problem;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * Created by Sage on 9/6/2015.
@@ -6,14 +14,15 @@ package problems.reallyOld;
  * Answer is 10-15-24, increase NUM_TURNS to increase accuracy,
  * though it is fairly accurate for 100,000.
  */
-public class Problem84Monopoly {
+public class Euler084 implements Problem {
 
     private static int BOARD_SIZE = 40;
     private static int DIE_PIPS = 4;
     private static int NUM_TURNS = 100000;
 
-    public static void main(String[] args) {
-        int[] board = new int[BOARD_SIZE];
+    @Override
+    public String solve() {
+        Integer[] board = new Integer[BOARD_SIZE];
         for (int i = 0; i < BOARD_SIZE; i++) {
             board[i] = 0;
         }
@@ -97,10 +106,23 @@ public class Problem84Monopoly {
             }
             board[place]++;
         }
-        printBoard(board);
+        Map<Integer, Integer> boardMap = new HashMap<>();
+        for (int i = 0; i < BOARD_SIZE; i++) {
+           boardMap.put(board[i], i);
+        }
+        List<Object> landings = Arrays.asList(boardMap.keySet().toArray());
+        List<Integer> boardList = new ArrayList<>();
+        for (Object landing : landings) {
+            boardList.add((int) landing);
+        }
+        boardList.sort(Integer::compareTo);
+        return String.valueOf(
+                10000 * boardMap.get(boardList.get(BOARD_SIZE - 1))
+                        + 100 * boardMap.get(boardList.get(BOARD_SIZE - 2))
+                        + boardMap.get(boardList.get(BOARD_SIZE - 3)));
     }
 
-    private static void printBoard(int[] board) {
+    private static void printBoard(Integer[] board) {
         for (int i = 0; i < BOARD_SIZE; i++) {
             System.out.println(i + ": " + ((double) board[i])/NUM_TURNS);
         }

@@ -35,9 +35,6 @@ public class Euler072 implements Problem {
 
         for (long i = 2; i < LIMIT; i++) {
             if (denominators[(int) i] == 1) {
-                // This part is slow, if I care about performance,
-                // could optimize this to happen while generating
-                // the sieve.
                 for (int j = (int) i; j < LIMIT; j += i) {
                     numerators[j] *= (i-1);
                     denominators[j] *= i;
@@ -46,6 +43,6 @@ public class Euler072 implements Problem {
             total += i * numerators[(int) i] / denominators[(int) i];
         }
 
-            return String.valueOf(total);
+        return String.valueOf(total);
     }
 }

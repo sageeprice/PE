@@ -28,6 +28,7 @@ public class Euler009 implements Problem {
                 }
             }
         }
+        // Will not be reached.
         return null;
     }
 }

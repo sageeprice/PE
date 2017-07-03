@@ -27,7 +27,7 @@ public class Euler002 implements Problem {
         fibonaccis.add(1);
         fibonaccis.add(1);
 
-        int fibLength = fibonaccis.size();
+        int fibLength;
         int sumFibonacci = 0;
 
         while (true) {

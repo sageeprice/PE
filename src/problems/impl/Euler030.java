@@ -14,6 +14,7 @@ public class Euler030 implements Problem {
     // original was 6 * 9^5.
     private static final int LIMIT = 200000;
     private static final int POWER = 5;
+    private static final int BASE = 10;
 
     @Override
     public String solve() {
@@ -21,13 +22,24 @@ public class Euler030 implements Problem {
         int sum = 0;
 
         for (int i = 10; i < LIMIT; i++) {
-            // Lazy way to do it: iterate through all integers and evaluate.
-            int digitalSum = String.valueOf(i).chars().map(d -> d - '0').map(d -> (int) Math.pow(d,POWER)).sum();
-            if (i == digitalSum) {
+            if (i == sumPowerOfDigits(i)) {
                 sum += i;
             }
         }
 
         return String.valueOf(sum);
     }
+
+	private static int sumPowerOfDigits(int check) {
+		int sum = 0;
+		int test = check;
+		while (test > 0) {
+            sum += Math.pow(test% BASE, POWER);
+			test /= BASE;
+			if (sum > check) {
+				return 0;
+			}
+		}
+		return sum;
+	}
 }

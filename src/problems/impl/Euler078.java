@@ -13,6 +13,7 @@ import java.util.List;
  */
 public class Euler078 implements Problem {
 
+    private static final int MILLI = 1_000_000;
     @Override
     public String solve() {
 
@@ -29,20 +30,23 @@ public class Euler078 implements Problem {
             for (long j = 1; j <= i; j++) {
                 sign *= -1;
                 long index1 = i - (j * ((3 * j) - 1)) / 2;
+                if (index1 < 0)
+                    break;
+                long p1 = partitions.get((int) index1);
+                sum += sign * p1;
+
                 long index2 = i - (j * ((3 * j) + 1)) / 2;
-                long p1 = index1 >= 0 ? partitions.get((int) index1) : 0;
-                long p2 = index2 >= 0 ? partitions.get((int) index2) : 0;
-                sum += sign * (p1 + p2);
+                if (index2 < 0)
+                    break;
+                long p2 = partitions.get((int) index2);
+                sum += sign * p2;
             }
-            sum %= 1000000;
+            sum %= MILLI;
             partitions.add(sum);
-            if (sum % 1000000 == 0) {
+            if (sum % MILLI == 0) {
                 return String.valueOf(i);
             }
             i++;
         }
-
-        // Subtract one since we ignore 100 = 100
-//        return null;
     }
 }
