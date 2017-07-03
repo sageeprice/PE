@@ -1,4 +1,6 @@
-package problems.reallyOld;
+package problems.impl;
+
+import problems.Problem;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -6,31 +8,37 @@ import java.io.IOException;
 import java.util.*;
 
 /**
- * Created by Sage on 9/13/2015.
+ * Minimum spanning tree.
+ *
+ * Answer: 259679
  */
-public class Problem107MinimalNetwork {
+public class Euler107 implements Problem {
 
-    private static final String FILE_NAME = "C:\\Users\\Sage\\workspace\\SageKatas\\eulerTxtFiles\\p107_network.txt";
+    private static final String FILE_NAME = "src/text/p107_network.txt";
 
-    public static void main(String[] args) throws IOException {
+    @Override
+    public String solve() {
         Forest forest = new Forest(40);
         Set<NetworkEdge> networkEdges = new TreeSet<>();
         int totalWeight = 0;
 
-        try (BufferedReader br = new BufferedReader(new FileReader(FILE_NAME))) {
-            String line;
-            int lineNum = 0;
-            while ((line = br.readLine()) != null) {
-                String[] row = line.split(",");
-                for (int i = 0; i < lineNum; i++) {
-                    if (!row[i].equals("-")) {
-                        networkEdges.add(new NetworkEdge(lineNum, i, Integer.valueOf(row[i])));
-                        totalWeight += Integer.valueOf(row[i]);
+        try {
+            try (BufferedReader br = new BufferedReader(new FileReader(FILE_NAME))) {
+                String line;
+                int lineNum = 0;
+                while ((line = br.readLine()) != null) {
+                    String[] row = line.split(",");
+                    for (int i = 0; i < lineNum; i++) {
+                        if (!row[i].equals("-")) {
+                            networkEdges.add(new NetworkEdge(lineNum, i, Integer.valueOf(row[i])));
+                            totalWeight += Integer.valueOf(row[i]);
+                        }
                     }
+                    lineNum++;
                 }
-                //nodes.add(lineNum);
-                lineNum++;
             }
+        } catch (IOException e) {
+            throw new RuntimeException("Failed to read file " + FILE_NAME);
         }
 
         Iterator<NetworkEdge> edgeIterator = networkEdges.iterator();
@@ -42,9 +50,7 @@ public class Problem107MinimalNetwork {
                 forest.joinTrees(edge.getStart(), edge.getEnd());
             }
         }
-        System.out.println("Total size is: " + totalWeight);
-        System.out.println("Forest is size: " + forestWeight);
-        System.out.println("Weight savings: " + (totalWeight - forestWeight));
+        return String.valueOf(totalWeight - forestWeight);
     }
 
     private static class Forest {
