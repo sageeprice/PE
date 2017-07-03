@@ -1,11 +1,13 @@
-package problems.reallyOld;
+package problems.impl;
+
+import problems.Problem;
 
 import java.math.BigInteger;
 
 /**
  * Created by Sage on 11/24/2015.
  */
-public class Problem100ArrangedProbability {
+public class Euler100 implements Problem {
 
     private static final BigInteger TWO = new BigInteger("2");
     private static final BigInteger FOUR = new BigInteger("4");
@@ -13,18 +15,21 @@ public class Problem100ArrangedProbability {
     private static final BigInteger TWENTY_ONE = new BigInteger("21");
     private static final BigInteger END = new BigInteger("1000000000000");
 
-    public static void main(String[] args) {
-
+    @Override
+    public String solve() {
         BigInteger twoBack = FOUR;
         BigInteger last = TWENTY_ONE;
         while (last.compareTo(END) != 1) {
             BigInteger y = last.multiply(SIX).subtract(twoBack).subtract(TWO);
             twoBack = last;
             last = y;
-//            System.out.println(last);
         }
-        BigInteger answer = sqrt(last.multiply(last.subtract(BigInteger.ONE)).divide(TWO)).add(BigInteger.ONE);
-        System.out.println("Answer is: " + answer);
+        BigInteger answer =
+                sqrt(
+                        last.multiply(last.subtract(BigInteger.ONE))
+                                .divide(TWO))
+                        .add(BigInteger.ONE);
+        return String.valueOf(answer);
     }
 
     // from http://stackoverflow.com/questions/4407839/how-can-i-find-the-square-root-of-a-java-biginteger
@@ -33,7 +38,7 @@ public class Problem100ArrangedProbability {
         BigInteger div2 = div;
         // Loop until we hit the same value twice in a row, or wind
         // up alternating.
-        for(;;) {
+        while (true) {
             BigInteger y = div.add(x.divide(div)).shiftRight(1);
             if (y.equals(div) || y.equals(div2))
                 return y;
