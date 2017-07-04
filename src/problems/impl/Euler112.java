@@ -1,10 +1,14 @@
-package problems.reallyOld;
+package problems.impl;
+
+import problems.Problem;
 
 /**
  * Created by Sage on 9/12/2015.
  */
-public class Problem112BouncyNumbers {
-    public static void main(String[] args) {
+public class Euler112 implements Problem {
+
+    @Override
+    public String solve() {
         double ratio = 0;
         double bouncyCount = 0;
         long index = 100;
@@ -14,11 +18,8 @@ public class Problem112BouncyNumbers {
                 bouncyCount++;
                 ratio = bouncyCount/index;
             }
-            if (index%10000 == 0) {
-                System.out.println("Ratio at "+index+" is: "+ratio);
-            }
         }
-        System.out.println("Ratio breaks .99 at: " + index);
+        return String.valueOf(index);
     }
 
     public static boolean isBouncy(long num) {
@@ -26,10 +27,9 @@ public class Problem112BouncyNumbers {
     }
 
     public static boolean isIncreasing(long num) {
-        int x = (int) num%10;
+        int x = (int) num % 10;
         num /= 10;
         int y;
-        boolean inc = true;
         while (num > 0) {
             y = (int) num % 10;
             num /= 10;
@@ -42,10 +42,9 @@ public class Problem112BouncyNumbers {
     }
 
     public static boolean isDecreasing(long num) {
-        int x = (int) num%10;
+        int x = (int) num % 10;
         num /= 10;
         int y;
-        boolean inc = true;
         while (num > 0) {
             y = (int) num % 10;
             num /= 10;

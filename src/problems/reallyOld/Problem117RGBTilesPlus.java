@@ -3,7 +3,7 @@ package problems.reallyOld;
 /**
  * Created by Sage on 9/13/2015.
  *
- * The brute force approach, still works very quickly. Go check Problem117Clever for nice version.
+ * The brute force approach, still works very quickly. Go check Euler117 for nice version.
  */
 public class Problem117RGBTilesPlus {
 

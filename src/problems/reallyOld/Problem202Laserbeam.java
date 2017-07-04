@@ -11,13 +11,11 @@ package problems.reallyOld;
  */
 public class Problem202Laserbeam {
 
-    static long BOUNCES = 12017639147L;
-    static long LEVELS = (BOUNCES+3)/2;
+    private static final long BOUNCES = 12017639147L;
+    private static final long LEVELS = (BOUNCES+3)/2;
 
     public static void main(String[] args) {
-        long startTime = System.currentTimeMillis();
         System.out.println("Calculating up to: "+LEVELS);
-        long ways = 0;
 
         long factor = 3;
         long x = LEVELS;
@@ -35,7 +33,11 @@ public class Problem202Laserbeam {
             }
             factor += 2;
         }
-        System.out.println("Number of relatively prime values is " + (long) (relativePrimes - Math.pow(2, primeFactors))/3);
+        System.out.println("Number of relatively prime values is "
+                + (long) (relativePrimes - Math.pow(2, primeFactors))/3);
+        /*
+        // The old slow way of doing it.
+        long ways = 0;
         for (long i = 1; i < LEVELS; i++) {
             if ((i%3 == 2) && (gcd(i, LEVELS)==1)) {
                 ways++;
@@ -47,6 +49,7 @@ public class Problem202Laserbeam {
         System.out.println("Answer: "+ways);
         long endTime = System.currentTimeMillis();
         System.out.println("Total runtime is " + (endTime - startTime));
+        */
     }
 
     public static long gcd(long a, long b) {

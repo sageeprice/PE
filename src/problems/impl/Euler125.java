@@ -1,4 +1,6 @@
-package problems.reallyOld;
+package problems.impl;
+
+import problems.Problem;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -6,16 +8,18 @@ import java.util.Set;
 /**
  * Easy
  */
-public class Problem125PalindromicSums {
+public class Euler125 implements Problem {
 
     private static final int CAP = 100000000;
     private static final int LIM = 10000;
 
-    public static void main(String[] args) {
+    @Override
+    public String solve() {
         long palindromes = 0;
         long sum;
         Set<Long> palindromeSet = new HashSet<>(); // for potential duplicates
 
+        // Aggressively inefficient, but good enough.
         for (int i = 1; i < LIM; i++) {
             sum = i*i;
             for (int j = i+1; j < LIM; j++) {
@@ -28,7 +32,7 @@ public class Problem125PalindromicSums {
                 }
             }
         }
-        System.out.println(palindromes);
+        return String.valueOf(palindromes);
     }
 
     public static boolean isPalindrome(long x) {

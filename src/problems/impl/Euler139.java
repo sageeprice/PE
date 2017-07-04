@@ -1,11 +1,14 @@
-package problems.reallyOld;
+package problems.impl;
+
+import problems.Problem;
 
 /**
- * Working, and quite quickly. Pretty happy with it.
- * Should try to make iterative, cuz fuck recursion.
+ * Working, and quite quickly. Pretty happy with it. Generates all
+ * Pythagorean triples recursively.
+ *
  * Answer: 10057761
  */
-public class Problem139PythagoreanTiles {
+public class Euler139 implements Problem {
 
     private static final long PERIM = 100000000;
 
@@ -13,11 +16,11 @@ public class Problem139PythagoreanTiles {
     private static final int[] M2 = {1,2,2,2,1,2,2,2,3};
     private static final int[] M3 = {-1,2,2,-2,1,2,-2,2,3};
 
-    public static void main(String[] args) {
-
+    @Override
+    public String solve() {
         int[] start = {3,4,5};
 
-        System.out.println(recurse(start));
+        return String.valueOf(recurse(start));
     }
 
     /**
@@ -53,7 +56,6 @@ public class Problem139PythagoreanTiles {
 
     private static long recurse(int[] start) {
         long sum = getTilesInMultiples(start);
-//        System.out.println(sum + " contributed by " + start[0]+", "+start[1]+", "+start[2]);
         int[] next = new int[3];
         if (getPerimeter(start) < PERIM) {
             multiply(M1, start, next);
@@ -66,7 +68,7 @@ public class Problem139PythagoreanTiles {
         return sum;
     }
 
-    private static final long getPerimeter(int[] arr) {
+    private static long getPerimeter(int[] arr) {
         long s = 0;
         for (int i = 0; i < arr.length; i++) {
             s += arr[i];

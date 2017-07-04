@@ -1,17 +1,26 @@
-package problems.reallyOld;
+package problems.impl;
 
-import java.util.*;
+
+import problems.Problem;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Set;
+import java.util.TreeSet;
 
 /**
  * Is good.
  */
-public class Problem124OrderedRadicals {
+public class Euler124 implements Problem {
 
     private static int CAP = 100000;
 
-    public static void main(String[] args) {
+    @Override
+    public String solve() {
         int[] rads = new int[CAP+1];
         Arrays.fill(rads, 1);
+        // Same idea as a sieve of Eratosthenes.
         for (int i = 2; i <= CAP; i++) {
             if (rads[i] == 1) {
                 for (int j = i; j <= CAP; j += i) {
@@ -21,12 +30,11 @@ public class Problem124OrderedRadicals {
         }
         Set<Pair> radSet = new TreeSet<>();
         for (int i = 1; i <= CAP; i++) {
-            if (!radSet.add(new Pair(i, rads[i])))
-                System.out.println("FAILED TO ADD: " + i);
+            radSet.add(new Pair(i, rads[i]));
         }
         List<Pair> list = new ArrayList<>(radSet);
         Pair answer = list.remove(9999);
-        System.out.println(answer.getX());
+        return String.valueOf(answer.getX());
     }
 
     private static class Pair implements Comparable<Pair> {
