@@ -1,11 +1,14 @@
-package problems.reallyOld;
+package problems.impl;
+
+import problems.Problem;
 
 /**
  * Created by Sage on 9/24/2015.
  */
-public class Problem205DiceGame {
+public class Euler205 implements Problem {
 
-    public static void main(String[] args) {
+    @Override
+    public String solve() {
         double total = Math.pow(4, 9) * Math.pow(6, 6);
         long sum = 0;
         long[] fours = new long[37];
@@ -49,6 +52,6 @@ public class Problem205DiceGame {
                 sum += fours[i]*sixes[j];
             }
         }
-        System.out.println("Answer is: " + (sum / total));
+        return String.format("%.7f", sum/total);
     }
 }

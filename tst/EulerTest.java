@@ -49,6 +49,7 @@ import problems.impl.Euler047;
 import problems.impl.Euler048;
 import problems.impl.Euler049;
 import problems.impl.Euler050;
+import problems.impl.Euler051;
 
 import static junit.framework.TestCase.assertEquals;
 
@@ -107,5 +108,6 @@ public class EulerTest {
         assertEquals(new Euler048().solve(), "9110846700");
         assertEquals(new Euler049().solve(), "296962999629");
         assertEquals(new Euler050().solve(), "997651");
+        assertEquals(new Euler051().solve(), "");
      }
 }
