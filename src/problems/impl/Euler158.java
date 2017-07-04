@@ -1,15 +1,18 @@
-package problems.reallyOld;
+package problems.impl;
+
+import problems.Problem;
 
 import java.util.Arrays;
 
 /**
  * Could be cleaned up if clever, look at forums. Dynamic programming works though
  */
-public class Problem158LexicStringOrder {
+public class Euler158 implements Problem {
 
     private static final int LETTERS = 26;
 
-    public static void main(String[] args) {
+    @Override
+    public String solve() {
         // [number of digits][last digit]
         long[][] arrangements = new long[LETTERS][LETTERS];
         for (int i = 0; i < LETTERS; i++) {
@@ -27,7 +30,6 @@ public class Problem158LexicStringOrder {
             }
         }
         long best = 0;
-        long top = 0;
         for (int i = 0; i < LETTERS; i++) {
             long sum = 0;
             for (int j = 0; j <= i; j++) {
@@ -37,12 +39,12 @@ public class Problem158LexicStringOrder {
                 best = sum*nCp(LETTERS, i+1);
             }
         }
-        System.out.println(best);
+        return String.valueOf(best);
     }
 
-    public static long nCp(long n, long p) {
+    private static long nCp(long n, long p) {
         long prod = 1;
-        p = p>n-p ? n-p : p;
+        p = p > n - p ? n - p : p;
         for (int i = 1; i <= p; i++) {
             prod *= n-(i-1);
             prod /= i;

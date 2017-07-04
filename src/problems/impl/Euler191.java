@@ -1,13 +1,16 @@
-package problems.reallyOld;
+package problems.impl;
 
-public class Problem191PrizeStrings {
+import problems.Problem;
+
+public class Euler191 implements Problem {
 
     private static final int O = 0;
     private static final int A = 1;
     private static final int L = 2;
     private static final int DAYS = 30;
 
-    public static void main(String[] args) {
+    @Override
+    public String solve() {
         long[][][] late = new long[30][3][3];
         long[][][] timely = new long[30][2][2];
 
@@ -36,7 +39,7 @@ public class Problem191PrizeStrings {
             late[i][O][A] += late[i-1][O][O] + late[i-1][A][O] + late[i-1][L][O];
             late[i][A][A] += late[i-1][O][A] + late[i-1][L][A]; // cannot have 3 absences in a row
         }
-        System.out.println(timely[29][O][O]
+        return String.valueOf(timely[29][O][O]
                         + timely[29][O][A]
                         + timely[29][A][A]
                         + timely[29][A][O]

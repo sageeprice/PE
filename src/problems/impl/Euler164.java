@@ -1,11 +1,14 @@
-package problems.reallyOld;
+package problems.impl;
+
+import problems.Problem;
 
 /**
  * DP so easy
  */
-public class Problem164 {
+public class Euler164 implements Problem {
 
-    public static void main(String[] args) {
+    @Override
+    public String solve() {
         long[][][] numbers = new long[20][10][10];
         for (int i = 0; i < 20; i++) {
             for (int j = 0; j < 10; j++) {
@@ -41,6 +44,6 @@ public class Problem164 {
                 sum += numbers[19][i][j];
             }
         }
-        System.out.println(sum);
+        return String.valueOf(sum);
     }
 }

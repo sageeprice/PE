@@ -1,13 +1,16 @@
-package problems.reallyOld;
+package problems.impl;
+
+import problems.Problem;
 
 /**
  * Created by Sage on 10/24/2015.
  */
-public class Problem173HollowSquares {
+public class Euler173 implements Problem {
 
     private static final long MAX_TILES = 1000000;
 
-    public static void main(String[] args) {
+    @Override
+    public String solve() {
         long count = 0;
         long x = 3;
         while (4*(x-1) <= MAX_TILES) {
@@ -20,6 +23,6 @@ public class Problem173HollowSquares {
             }
             x += 1;
         }
-        System.out.println(count);
+        return String.valueOf(count);
     }
 }

@@ -1,16 +1,18 @@
-package problems.reallyOld;
+package problems.impl;
+
+import problems.Problem;
 
 /**
  * Go look in the forums, understand this better
  */
-public class Problem160FactorialTrailing {
+public class Euler160 implements Problem {
 
     private static final long MOD = 100000;
     private static final long CAP = 1000000000000L;
 
-    public static void main(String[] args) {
+    @Override
+    public String solve() {
         long factorial = fakeFac(CAP);
-        System.out.println(factorial);
         long x = CAP;
         long twos = 0;
         while (x > 0) {
@@ -27,7 +29,7 @@ public class Problem160FactorialTrailing {
             factorial *= 2;
             factorial %= MOD;
         }
-        System.out.println(factorial);
+        return String.valueOf(factorial);
     }
 
     private static long fakeFac(long x) {
@@ -57,8 +59,8 @@ public class Problem160FactorialTrailing {
     private static long coprimeProd(long x) {
         x %= MOD;
         long prod = 1;
-        for (int i = 1; i <= x; i++) {
-            if (i%2 != 0 && i%5 != 0) {
+        for (int i = 1; i <= x; i += 2) {
+            if (i % 5 != 0) {
                 prod *= i;
                 prod %= MOD;
             }
