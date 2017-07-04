@@ -1,4 +1,4 @@
-package problems.reallyOld;
+package problems.impl;
 
 import problems.Problem;
 
