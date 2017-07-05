@@ -33,7 +33,6 @@ public class Euler080 implements Problem {
             for (int i = 2; i < 20; i++) {
                 guess = newtonSqrt(guess, square);
             }
-            System.out.println(guess);
             String num = guess.toPlainString().replace(".", "").substring(0,100);
             for (char c : num.toCharArray()) {
                 sum += c - '0';

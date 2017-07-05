@@ -49,7 +49,6 @@ public class Euler243 implements Problem {
         while (!isPrime(p)) {
             p += 2;
         }
-        System.out.println("next prime is "+p);
         return p;
     }
 

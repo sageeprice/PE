@@ -27,6 +27,6 @@ public class Euler202 implements Problem {
             }
             factor += 2;
         }
-        return String.valueOf((relativePrimes - Math.pow(2, primeFactors))/3);
+        return String.format("%.0f", (relativePrimes - Math.pow(2, primeFactors))/3);
     }
 }

@@ -28,8 +28,6 @@ public class Euler104 implements Problem {
             f2 = t % BILLION;
             count++;
             if (isPandigital(String.valueOf(f2))) {
-                System.out.print(count + ": ");
-
                 // F_n ~= phi^n / root(5). we only want leading digits, so take logarithm
                 // of this and drop the integer part to get the needed decimal. Then multiply
                 // by 10^8 (or just add 8 to the log...) and grab the integer part to get
@@ -38,7 +36,6 @@ public class Euler104 implements Problem {
                 lPow = lPow - (long) lPow;
 
                 int leadingDigits = (int) Math.floor(Math.pow(10, lPow + 8));
-                System.out.println(leadingDigits);
                 if (isPandigital(String.valueOf(leadingDigits))) {
                     return String.valueOf(count);
                 }

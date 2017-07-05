@@ -18,7 +18,7 @@ public class Euler084 implements Problem {
 
     private static int BOARD_SIZE = 40;
     private static int DIE_PIPS = 4;
-    private static int NUM_TURNS = 100000;
+    private static int NUM_TURNS = 150000;
 
     @Override
     public String solve() {
@@ -120,12 +120,6 @@ public class Euler084 implements Problem {
                 10000 * boardMap.get(boardList.get(BOARD_SIZE - 1))
                         + 100 * boardMap.get(boardList.get(BOARD_SIZE - 2))
                         + boardMap.get(boardList.get(BOARD_SIZE - 3)));
-    }
-
-    private static void printBoard(Integer[] board) {
-        for (int i = 0; i < BOARD_SIZE; i++) {
-            System.out.println(i + ": " + ((double) board[i])/NUM_TURNS);
-        }
     }
 
     /**
