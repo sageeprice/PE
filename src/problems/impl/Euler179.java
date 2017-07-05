@@ -50,7 +50,6 @@ public class Euler179 implements Problem {
         int count = 0;
         for (int i = 3; i < LIMIT; i++) {
             if (factors[i] == factors[i-1]) {
-//                System.out.println(i + ": " + factors[i]);
                 count++;
             }
         }
