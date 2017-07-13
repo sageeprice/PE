@@ -122,6 +122,7 @@ import problems.impl.Euler500;
 import problems.impl.Euler577;
 import problems.impl.Euler587;
 import problems.impl.Euler601;
+import problems.impl.Euler088;
 
 import static org.junit.Assert.assertEquals;
 
@@ -214,6 +215,7 @@ public class EulerFastTests {
         assertEquals(new Euler085().solve(), "2772");
         assertEquals(new Euler086().solve(), "1818");
         assertEquals(new Euler087().solve(), "1097343");
+        assertEquals(new Euler088().solve(), "7587457");
         assertEquals(new Euler089().solve(), "743");
         assertEquals(new Euler090().solve(), "1217");
         assertEquals(new Euler091().solve(), "14234");
