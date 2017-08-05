@@ -10,20 +10,25 @@ public class Euler232 implements Problem {
     // Cached for speed, most of run time was spent calculating these.
     private static final int[] B_GAINS = {0, 1, 2, 4, 8, 16, 32, 64, 128};
     private static final int MAX_FLIPS = 8;
+    private static final int SCORE = 100;
+
+    // Help to get the last 8 digits.
+    private static final double CUTOFF = 100_000_000.0;
 
     @Override
     public String solve() {
 
-        double[][] playerTwoWinProbability = new double[101][101];
+        double[][] playerTwoWinProbability = new double[SCORE + 1][SCORE + 1];
 
-        for (int b = 1; b <= 100; b++) {
+        for (int b = 1; b <= SCORE; b++) {
             for (int a = 1; a <= b; a++) {
                 playerTwoWinProbability[a][b] = oddsBWins(a, b, playerTwoWinProbability);
                 playerTwoWinProbability[b][a] = oddsBWins(b, a, playerTwoWinProbability);
             }
         }
 
-        return String.valueOf(Math.round(playerTwoWinProbability[100][100] * 100_000_000) / 100_000_000.0);
+        return String.valueOf(
+                Math.round(playerTwoWinProbability[SCORE][SCORE] * CUTOFF) / CUTOFF);
     }
 
     private static double oddsBWins(int a, int b, double[][] twoWinsOdds) {
