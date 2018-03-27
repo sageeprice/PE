@@ -1,9 +1,8 @@
 package problems;
 
-/**
- * Created by Sage on 10/7/16.
- */
+/** Provides answers to ProjectEuler problems. */
 public interface Problem {
 
-    public String solve();
+    /** Returns String representation of the answer to the problem. */
+    String solve();
 }
