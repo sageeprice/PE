@@ -8,8 +8,8 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * Math behind this is fairly well-known, see
- * {@link <@a href="https://en.wikipedia.org/wiki/Out_shuffle">Wikipedia</a>}.
+ * Math behind this is fairly well-known
+ * @see <@a href="https://en.wikipedia.org/wiki/Out_shuffle">Wikipedia</a>.
  *
  * Answer: 3010983666182123972
  */
