@@ -1,5 +1,6 @@
 import org.junit.Test;
 import problems.impl.*;
+import problems.incomplete.Euler093;
 import problems.incomplete.Euler174;
 
 import static org.junit.Assert.assertEquals;
@@ -97,6 +98,7 @@ public class EulerFastTests {
         assertEquals(new Euler089().solve(), "743");
         assertEquals(new Euler090().solve(), "1217");
         assertEquals(new Euler091().solve(), "14234");
+        assertEquals(new Euler093().solve(), "1258");
         assertEquals(new Euler096().solve(), "24702");
         assertEquals(new Euler098().solve(), "18769");
         assertEquals(new Euler099().solve(), "709");
