@@ -1,6 +1,6 @@
 import org.junit.Test;
 import problems.impl.*;
-import problems.incomplete.Euler093;
+import problems.impl.Euler093;
 import problems.incomplete.Euler174;
 
 import static org.junit.Assert.assertEquals;

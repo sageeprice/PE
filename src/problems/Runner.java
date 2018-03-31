@@ -1,6 +1,6 @@
 package problems;
 
-import problems.incomplete.Euler093;
+import problems.impl.Euler093;
 
 /** Runner class to execute Project Euler solutions. */
 public class Runner {
