@@ -7,6 +7,12 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Queue;
 
+/**
+ * Check all pairs of primes that multiply to a number less than the LIMIT, and
+ * then find the largest for each pair.
+ *
+ * Answer: 11109800204052
+ */
 public class Euler347 implements Problem {
 
     private static final int LIMIT = 10_000_000;

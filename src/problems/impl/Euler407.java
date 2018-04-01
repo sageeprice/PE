@@ -2,6 +2,15 @@ package problems.impl;
 
 import problems.Problem;
 
+/**
+ * a*a === a mod m => a*a - a === 0 => a(a-1) === 0
+ * So since m = p_1^q_1 * p_2^q_2 ... , each factor p_i of m must divide one of
+ * a or a-1. Stupid approach: subtract the largest prime factor of m from m
+ * until we find that either the number plus 1 or the number we check is an
+ * idempotent. That must be the largest solution.
+ *
+ * Answer: 39782849136421
+ */
 public class Euler407 implements Problem {
 
     private static final int LIMIT = 10_000_000;
