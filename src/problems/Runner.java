@@ -1,14 +1,14 @@
 package problems;
 
 
-import problems.impl.Euler347;
+import problems.impl.Euler407;
 
 /** Runner class to execute Project Euler solutions. */
 public class Runner {
 
     public static void main(String[] args) {
         long startTime = System.currentTimeMillis();
-        System.out.println(new Euler347().solve());
+        System.out.println(new Euler407().solve());
         System.out.println("Time to compute was " + (System.currentTimeMillis() - startTime) + " milliseconds.");
     }
 }
