@@ -235,6 +235,7 @@ public class EulerFastTests {
         assertEquals(new Euler098().solve(), "18769");
         assertEquals(new Euler099().solve(), "709");
         assertEquals(new Euler100().solve(), "756872327473");
+        assertEquals(new Euler100().solve(), "37076114526");
         assertEquals(new Euler104().solve(), "329468");
         assertEquals(new Euler107().solve(), "259679");
         assertEquals(new Euler108().solve(), "180180");
