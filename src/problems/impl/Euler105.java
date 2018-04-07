@@ -6,10 +6,8 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
-import java.util.Map;
 import java.util.Set;
 import java.util.stream.IntStream;
 
@@ -59,48 +57,49 @@ public class Euler105 implements Problem {
     }
 
     private static boolean isSpecialSumSet(int[] nums) {
-        Map<Integer, Integer> nMaxSums = new HashMap<>();
-        Map<Integer, Integer> nMinSums = new HashMap<>();
+        return smallSubsetsAreSmaller(nums)
+            && containsRepeatedSubsetSum(0, new ArrayList<>(), nums, new HashSet<>());
 
-        if (!recursiveCheck(0, new ArrayList<>(), nums, new HashSet<>(), nMaxSums, nMinSums)) {
-            return false;
-        }
+    }
 
-        for (int i = 1; i < nums.length - 1; i++) {
-            if (nMaxSums.get(i) > nMinSums.get(i+1)) {
+    /** Returns false when {@code nums} contains subsets B and C such that |B| < |C| but sum(b in B) > sum(c in C). */
+    private static boolean smallSubsetsAreSmaller(int[] nums) {
+        Arrays.sort(nums);
+        for (int i = 0; i <= nums.length / 2; i++) {
+            int lowSum = 0;
+            int highSum = 0;
+            for (int j = 0; j <= i; j++) {
+                lowSum += nums[j];
+                highSum += nums[nums.length - j - 1];
+            }
+            if (lowSum + nums[i+1] < highSum) {
                 return false;
             }
         }
-
         return true;
     }
 
-    private static boolean recursiveCheck(
+    private static boolean containsRepeatedSubsetSum(
             int index,
             List<Integer> subset,
             int[] nums,
-            Set<Integer> subsetSums,
-            Map<Integer, Integer> nMaxs,
-            Map<Integer, Integer> nMins) {
+            Set<Integer> subsetSums) {
         if (index == nums.length) {
             int sum = subset.stream().mapToInt(Integer::intValue).sum();
             if (subsetSums.contains(sum)) {
                 return false;
             } else {
                 subsetSums.add(sum);
+                return true;
             }
-            nMaxs.compute(subset.size(), (size, max) -> max == null || max < sum ? sum : max);
-            nMins.compute(subset.size(), (size, min) -> min == null || min > sum ? sum : min);
-            return true;
         }
-        if (!recursiveCheck(index + 1, subset, nums, subsetSums, nMaxs, nMins)) {
-            return false;
-        }
+        // Case I: integer at index is included.
         subset.add(nums[index]);
-        if (!recursiveCheck(index + 1, subset, nums, subsetSums, nMaxs, nMins)) {
+        if (!containsRepeatedSubsetSum(index + 1, subset, nums, subsetSums)) {
             return false;
         }
         subset.remove(subset.size() - 1);
-        return true;
+        // Case II: integer at index is excluded.
+        return containsRepeatedSubsetSum(index + 1, subset, nums, subsetSums);
     }
 }
