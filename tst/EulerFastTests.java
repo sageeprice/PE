@@ -137,6 +137,7 @@ import problems.impl.Euler601;
 import problems.impl.Euler622;
 import problems.impl.Euler106;
 import problems.impl.Euler102;
+import problems.impl.Euler121;
 import problems.incomplete.Euler174;
 import problems.impl.Euler336;
 
@@ -256,6 +257,7 @@ public class EulerFastTests {
         assertEquals(new Euler117().solve(), "100808458960497");
         assertEquals(new Euler119().solve(), "248155780267521");
         assertEquals(new Euler120().solve(), "333082500");
+        assertEquals(new Euler121().solve(), "2269");
         assertEquals(new Euler123().solve(), "21035");
         assertEquals(new Euler124().solve(), "21417");
         assertEquals(new Euler125().solve(), "2906969179");
