@@ -10,13 +10,13 @@ import problems.Problem;
  */
 public class Euler108 implements Problem {
 
-    private static final int PRIME_FILLED_NUMBER = 420; // 2 * 2 * 3 * 5 * 7 = blaze it?
+    private static final int PRIME_FILLED_NUMBER = 420; // 2 * 2 * 3 * 5 * 7
     private static final int TARGET = 1000;
 
     @Override
     public String solve() {
 
-        /**
+        /*
          * Suppose that x >= y . Then x = 2n is a clear upper bound for x.
          * Furthermore, 1/x + 1/y = 1/n => x, y > n , so n + 1 <= x <= n.
          * Then for ease of computation, suppose x = n + k where 1 <= k <= n.
