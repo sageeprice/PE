@@ -49,7 +49,6 @@ public class Euler122 implements Problem {
         }
       }
       sequenceTo.add(iSeqs);
-      System.out.println(i + ": " + sequenceTo.get(i).get(0).size());
     }
     return String.valueOf(
         sequenceTo.stream()
