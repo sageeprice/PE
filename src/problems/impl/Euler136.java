@@ -23,9 +23,6 @@ public class Euler136 implements Problem {
       if (res == 1 || res == 2) {
         continue;
       }
-      if (n % 1000000 == 0) {
-        System.out.println(n);
-      }
       int triples = 0;
       for (int j = res  == 0 ? 2 : 1; j <= Math.sqrt(n); j += 2) {
         int x = n / j;
