@@ -139,7 +139,7 @@ import problems.impl.Euler106;
 import problems.impl.Euler102;
 import problems.impl.Euler121;
 import problems.impl.Euler134;
-import problems.incomplete.Euler137;
+import problems.impl.Euler137;
 import problems.incomplete.Euler174;
 import problems.impl.Euler336;
 
