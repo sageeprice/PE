@@ -141,7 +141,7 @@ import problems.impl.Euler102;
 import problems.impl.Euler121;
 import problems.impl.Euler134;
 import problems.impl.Euler137;
-import problems.incomplete.Euler174;
+import problems.impl.Euler174;
 import problems.impl.Euler336;
 
 import static org.junit.Assert.assertEquals;
