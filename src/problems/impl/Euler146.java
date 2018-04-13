@@ -116,7 +116,7 @@ public class Euler146 implements Problem {
         // already. Therefore we need only proceed to check  values up through sqrt(n)
         for (int i = 3; i <= Math.sqrt(n); i+= 2) {
             if (sieve[i]) {
-                /**
+                /*
                  * Since you'll forget this Sage:
                  *  - if it's less than i*i more than i, it'll be covered by a smaller prime
                  *  - all primes > 2 are odd, so only need to check every other above i*i
