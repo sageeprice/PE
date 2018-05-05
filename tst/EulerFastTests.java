@@ -147,6 +147,7 @@ import problems.impl.Euler137;
 import problems.impl.Euler174;
 import problems.impl.Euler336;
 import problems.impl.Euler183;
+import problems.impl.Euler371;
 
 import static org.junit.Assert.assertEquals;
 
@@ -297,6 +298,7 @@ public class EulerFastTests {
         assertEquals(new Euler346().solve(), "336108797689259276");
         assertEquals(new Euler347().solve(), "11109800204052");
         assertEquals(new Euler358().solve(), "3284144505");
+        assertEquals(new Euler371().solve(), "40.66368097");
         assertEquals(new Euler493().solve(), "6.818741802");
         assertEquals(new Euler500().solve(), "35407281");
         assertEquals(new Euler577().solve(), "265695031399260211");
