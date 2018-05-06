@@ -16,6 +16,8 @@ import java.util.Set;
  * possible sum of sub-matrices by iterating across columns. Uses memoization
  * to run in a reasonable amount of time.
  *
+ * Side note: this problem exactly fits the Hungarian algorithm...
+ *
  * Answer: 13938
  */
 public class Euler345 implements Problem{
