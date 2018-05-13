@@ -66,6 +66,8 @@ public class EulerSlowTests {
     assertEquals(new Euler351().solve(), "11762187201804552");
     // ~6 seconds
     assertEquals(new Euler357().solve(), "1739023853137");
+    // <6 minutes!!!
+    assertEquals(new Euler387().solve(), "147534623725724718");
     // 2 seconds
     assertEquals(new Euler387().solve(), "696067597313468");
     // 2 seconds
