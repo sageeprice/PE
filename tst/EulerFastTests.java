@@ -290,6 +290,7 @@ public class EulerFastTests {
         assertEquals(new Euler191().solve(), "1918080160");
         assertEquals(new Euler199().solve(), "0.00396087");
         assertEquals(new Euler202().solve(), "1209002624");
+        assertEquals(new Euler202().solve(), "34029210557338");
         assertEquals(new Euler205().solve(), "0.5731441");
         assertEquals(new Euler207().solve(), "44043947822");
         assertEquals(new Euler232().solve(), "0.83648556");
