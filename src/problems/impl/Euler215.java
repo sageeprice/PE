@@ -9,9 +9,8 @@ import java.util.Collection;
 import java.util.List;
 
 /**
- * Too slow - need to optimize. Switch to DP rather than matrix multiplication.
- * Build all possible rows of length 10. Then figure out which rows may be
- * stacked on top of each other, and iterate.
+ * Dynamic programming solution. Construct all levels, determine valid transitions between levels.
+ * Then calculate number of ways to reach given level from the previous level.
  *
  * Answer: 806844323190414
  */
