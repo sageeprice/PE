@@ -2,6 +2,12 @@ package problems.impl;
 
 import problems.Problem;
 
+/**
+ * Sum of all needed primes is small enough to fit in memory, so use an array to keep track of
+ * the subset sums. Then just use dynamic programming.
+ *
+ * Answer: 9275262564250418
+ */
 public class Euler249 implements Problem {
 
   private static final long LAST_SIXTEEN = (long) Math.pow(10, 16);
