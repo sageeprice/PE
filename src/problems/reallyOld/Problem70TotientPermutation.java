@@ -1,8 +1,10 @@
 package problems.reallyOld;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
+
+import static problems.EulerLib.isPermutation;
+import static problems.EulerLib.primesTo;
 
 /**
  * Most of this one was tightening the range to where you have a reasonable value
@@ -18,9 +20,9 @@ public class Problem70TotientPermutation {
 
     public static void main(String[] args) {
         long st = System.currentTimeMillis();
-        List<Integer> primeList = primeList(sieveTo((int)Math.sqrt(CAP)*2));
+        List<Integer> primeList = primeList(primesTo((int)Math.sqrt(CAP)*2));
         double best = Double.MAX_VALUE;
-        int n = 1;
+        int n;
         int bestN = 0;
         double phi;
         for (int i = 345; i < primeList.size(); i+=1) {
@@ -60,42 +62,6 @@ public class Problem70TotientPermutation {
             i++;
         }
         return (int) (n * (phiNum / phiDen));
-    }
-
-    public static boolean isPermutation(int x, int y) {
-        char[] xStr = String.valueOf(x).toCharArray();
-        char[] yStr = String.valueOf(y).toCharArray();
-
-        Arrays.sort(xStr);
-        Arrays.sort(yStr);
-
-        return Arrays.equals(xStr,yStr);
-    }
-
-    private static boolean[] sieveTo(int n) {
-        boolean[] sieve = new boolean[n+1];
-        if (n >= 2) {
-            sieve[2] = true;
-        }
-        for (int i = 3; i <= n; i+=2) {
-            sieve[i] = true;
-        }
-        for (int i = 3; i <= Math.sqrt(n); i+= 2) {
-            if (sieve[i]) {
-                /**
-                 * Since you'll forget this Sage:
-                 *  - if it's less than i*i more than i, it'll be covered by a smaller prime
-                 *  - all primes > 2 are odd, so only need to check every other above i*i
-                 *  One improvement that could be made: technically only need to check
-                 *  of the form 6k+1 and 6k-1 (k an int), as 6k+3 is multiple of 3.
-                 */
-                for (int j = i*i; j <= n; j += i * 2) {
-                    sieve[j] = false;
-                }
-            }
-        }
-
-        return sieve;
     }
 
     private static List<Integer> primeList(boolean[] sieve) {

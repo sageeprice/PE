@@ -2,6 +2,8 @@ package problems.impl;
 
 import problems.Problem;
 
+import static problems.EulerLib.primesTo;
+
 /**
  * Two cases:
  *  m == n:
@@ -23,7 +25,7 @@ public class Euler313 implements Problem {
   public String solve() {
 
     long sum = 0;
-    boolean[] isPrime = sieveTo(1_000_000);
+    boolean[] isPrime = primesTo(1_000_000);
     for (int p = 3; p < isPrime.length; p += 2) {
       if (isPrime[p]) {
         sum += countGrids(p);
@@ -39,23 +41,5 @@ public class Euler313 implements Problem {
     // 3x + y = a implies y < a / 4.
     long y = (a - 1) / 4;
     return (y+1)/3;
-  }
-
-  private static boolean[] sieveTo(int n) {
-    boolean[] sieve = new boolean[n+1];
-    if (n >= 2) {
-      sieve[2] = true;
-    }
-    for (int i = 3; i <= n; i+=2) {
-      sieve[i] = true;
-    }
-    for (int i = 3; i <= Math.sqrt(n); i+= 2) {
-      if (sieve[i]) {
-        for (int j = i*i; j <= n; j += i * 2) {
-          sieve[j] = false;
-        }
-      }
-    }
-    return sieve;
   }
 }

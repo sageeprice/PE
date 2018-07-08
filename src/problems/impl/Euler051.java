@@ -5,6 +5,8 @@ import problems.Problem;
 import java.util.HashMap;
 import java.util.Map;
 
+import static problems.EulerLib.primesTo;
+
 /**
  * Problem 51:
  * https://projecteuler.net/problem=51
@@ -37,7 +39,7 @@ public class Euler051 implements Problem {
         // Get all primes less than 1000000
         // I checked the 5 digit range and found no solution,
         // so we're starting at 6 digits now
-        boolean[] primeSieve = sieveTo(1000000);
+        boolean[] primeSieve = primesTo(1000000);
 
         // Only need to check odds since we want primes
         for (int i = 100001; i < 1000000; i += 2) {
@@ -118,30 +120,5 @@ public class Euler051 implements Problem {
         }
 
         return -1;
-    }
-
-    /**
-     * Generate an array of booleans where value represents if index is prime
-     * @param x largest value in sieve
-     * @return array of booleans
-     */
-    private boolean[] sieveTo(int x) {
-
-        // Simple sieve implementation
-        boolean[] isPrime = new boolean[x + 1];
-
-        for (int i = 2; i <= x; i++) {
-            isPrime[i] = true;
-        }
-
-        for (int i = 2; i <= x; i++) {
-            if (isPrime[i]) {
-                for (int j = 2; j * i <= x; j++) {
-                    isPrime[j * i] = false;
-                }
-            }
-        }
-
-        return isPrime;
     }
 }

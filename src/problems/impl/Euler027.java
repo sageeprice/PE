@@ -2,6 +2,8 @@ package problems.impl;
 
 import problems.Problem;
 
+import static problems.EulerLib.primesTo;
+
 /**
  * Problem 27:
  * https://projecteuler.net/problem=27
@@ -16,7 +18,7 @@ public class Euler027 implements Problem {
     @Override
     public String solve() {
 
-        boolean[] isPrime = sieveTo(SIEVE_SIZE);
+        boolean[] isPrime = primesTo(SIEVE_SIZE);
 
         int mostConsecutivePrimes = 0;
         int ab = 0;
@@ -54,28 +56,4 @@ public class Euler027 implements Problem {
         return x*x + a*x + b;
     }
 
-    /**
-     * Generate an array of booleans where value represents if index is prime
-     * @param x largest value in sieve
-     * @return array of booleans
-     */
-    private boolean[] sieveTo(int x) {
-
-        // Simple sieve implementation
-        boolean[] isPrime = new boolean[SIEVE_SIZE + 1];
-
-        for (int i = 2; i <= SIEVE_SIZE; i++) {
-            isPrime[i] = true;
-        }
-
-        for (int i = 2; i <= SIEVE_SIZE; i++) {
-            if (isPrime[i]) {
-                for (int j = 2; j * i <= SIEVE_SIZE; j++) {
-                    isPrime[j * i] = false;
-                }
-            }
-        }
-
-        return isPrime;
-    }
 }

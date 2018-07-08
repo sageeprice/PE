@@ -71,7 +71,7 @@ public class Euler500 implements Problem {
                 count++;
                 if (count == pCount)
                     break;
-                /**
+                /*
                  * Since you'll forget this Sage:
                  *  - if it's less than i*i more than i, it'll be covered by a smaller prime
                  *  - all primes > 2 are odd, so only need to check every other above i*i

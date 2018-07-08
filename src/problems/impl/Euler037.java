@@ -4,6 +4,8 @@ import problems.Problem;
 
 import java.util.*;
 
+import static problems.EulerLib.primesTo;
+
 /**
  * Problem 37:
  * https://projecteuler.net/problem=37
@@ -18,12 +20,12 @@ public class Euler037 implements Problem {
         truncatablePrimes.add(3);
         truncatablePrimes.add(7);
 
-        boolean[] isPrime = sieveTo(1000000);
+        boolean[] isPrime = primesTo(1_000_000);
 
         // Generate the truncatables from the base set, keep going
         // until 11 have been generated
         while (truncatablePrimes.size() - 2 < 11) {
-            List<Integer> newTruncs = new ArrayList();
+            List<Integer> newTruncs = new ArrayList<>();
             for (int i : truncatablePrimes) {
                 // Couldn't figure out why this didn't work for a while,
                 // the last value that works is 739397 so it can't be generated
@@ -60,30 +62,5 @@ public class Euler037 implements Problem {
             y = y % (int) (Math.pow(10, Math.floor(Math.log10(y))));
         } while (y > 0);
         return true;
-    }
-
-    /**
-     * Generate an array of booleans where value represents if index is prime
-     * @param x largest value in sieve
-     * @return array of booleans
-     */
-    private boolean[] sieveTo(int x) {
-
-        // Simple sieve implementation
-        boolean[] isPrime = new boolean[x + 1];
-
-        for (int i = 2; i <= x; i++) {
-            isPrime[i] = true;
-        }
-
-        for (int i = 2; i <= x; i++) {
-            if (isPrime[i]) {
-                for (int j = 2; j * i <= x; j++) {
-                    isPrime[j * i] = false;
-                }
-            }
-        }
-
-        return isPrime;
     }
 }

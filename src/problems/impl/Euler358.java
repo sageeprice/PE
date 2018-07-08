@@ -2,6 +2,8 @@ package problems.impl;
 
 import problems.Problem;
 
+import static problems.EulerLib.primesTo;
+
 /**
  * Description in comments. Cyclic number must be prime. Then limit options
  * to examine based on given criteria.
@@ -15,7 +17,7 @@ public class Euler358 implements Problem {
 
     @Override
     public String solve() {
-        boolean[] sieve = sieveTo((int) Math.sqrt(HIGH_LIMIT));
+        boolean[] sieve = primesTo((int) Math.sqrt(HIGH_LIMIT));
         int primeCount = 1;
         for (int i = 3; i < (int) Math.sqrt(HIGH_LIMIT); i += 2) {
             if (sieve[i]) {
@@ -51,24 +53,6 @@ public class Euler358 implements Problem {
 
         // This won't happen.
         return "Could not find result";
-    }
-
-    private static boolean[] sieveTo(int limit) {
-        boolean[] sieve = new boolean[limit+1];
-
-        sieve[2] = true;
-        for (int i = 3; i <= limit; i += 2) {
-            sieve[i] = true;
-        }
-
-        for (int i = 3; i <= Math.sqrt(limit); i += 2) {
-            if (sieve[i]) {
-                for (int j = i * i; j <= limit; j += i) {
-                    sieve[j] = false;
-                }
-            }
-        }
-        return sieve;
     }
 
     private static boolean isPrime(int x, int[] primes) {

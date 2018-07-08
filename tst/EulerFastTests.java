@@ -159,11 +159,11 @@ import problems.impl.Euler215;
 
 import static org.junit.Assert.assertEquals;
 
-/** Tests to verify problems complete successfully. Only fast tests (<1 seconds). */
+/** Tests to verify problems complete successfully. Only fast tests (1 seconds or less). */
 public class EulerFastTests {
 
     @Test
-    public void testFastProblems() {
+    public void verifyFastProblems() {
         assertEquals(new Euler001().solve(), "233168");
         assertEquals(new Euler002().solve(), "4613732");
         assertEquals(new Euler003().solve(), "6857");
@@ -318,7 +318,6 @@ public class EulerFastTests {
         assertEquals(new Euler493().solve(), "6.818741802");
         assertEquals(new Euler500().solve(), "35407281");
         assertEquals(new Euler577().solve(), "265695031399260211");
-        // ~0.5 seconds
         assertEquals(new Euler587().solve(), "2240");
         assertEquals(new Euler601().solve(), "1617243");
         assertEquals(new Euler622().solve(), "3010983666182123972");

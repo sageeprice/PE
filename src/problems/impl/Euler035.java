@@ -5,6 +5,8 @@ import problems.Problem;
 import java.util.HashSet;
 import java.util.Set;
 
+import static problems.EulerLib.primesTo;
+
 /**
  * Problem 35:
  * https://projecteuler.net/problem=35
@@ -17,9 +19,9 @@ public class Euler035 implements Problem {
 
     @Override
     public String solve() {
-        boolean[] isPrime = sieveTo(SIEVE_SIZE);
+        boolean[] isPrime = primesTo(SIEVE_SIZE);
 
-        Set<Integer> circularPrimes = new HashSet();
+        Set<Integer> circularPrimes = new HashSet<>();
 
         for (int i = 2; i < SIEVE_SIZE; i++) {
             if (isPrime[i]) {
@@ -52,30 +54,5 @@ public class Euler035 implements Problem {
         int onesDig = x % 10;
         x /= 10;
         return x + onesDig * (int) Math.pow(10, String.valueOf(x).length());
-    }
-
-    /**
-     * Generate an array of booleans where value represents if index is prime
-     * @param x largest value in sieve
-     * @return array of booleans
-     */
-    private boolean[] sieveTo(int x) {
-
-        // Simple sieve implementation
-        boolean[] isPrime = new boolean[x + 1];
-
-        for (int i = 2; i <= x; i++) {
-            isPrime[i] = true;
-        }
-
-        for (int i = 2; i <= x; i++) {
-            if (isPrime[i]) {
-                for (int j = 2; j * i <= x; j++) {
-                    isPrime[j * i] = false;
-                }
-            }
-        }
-
-        return isPrime;
     }
 }

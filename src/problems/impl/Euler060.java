@@ -9,6 +9,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import static problems.EulerLib.primesTo;
+
 /**
  * Problem 60:
  * https://projecteuler.net/problem=60
@@ -36,7 +38,7 @@ public class Euler060 implements Problem {
         // current size it takes about 2 seconds to make.
         // Without sieve, time to check all concatenated
         // primes is way too high to work with.
-        primeSieve = sieveTo(SIEVE_SIZE);
+        primeSieve = primesTo(SIEVE_SIZE);
 
         // Generate list of primes
         List<Integer> primes = new ArrayList<>();
@@ -142,28 +144,4 @@ public class Euler060 implements Problem {
                 && primeSieve[Integer.valueOf(String.valueOf(q) + String.valueOf(p))];
     }
 
-    /**
-     * Generate an array of booleans where value represents if index is prime
-     * @param x largest value in sieve
-     * @return array of booleans
-     */
-    private boolean[] sieveTo(int x) {
-
-        // Simple sieve implementation
-        boolean[] isPrime = new boolean[x + 1];
-
-        for (int i = 2; i <= x; i++) {
-            isPrime[i] = true;
-        }
-
-        for (int i = 2; i <= x; i++) {
-            if (isPrime[i]) {
-                for (int j = 2; j * i <= x; j++) {
-                    isPrime[j * i] = false;
-                }
-            }
-        }
-
-        return isPrime;
-    }
 }

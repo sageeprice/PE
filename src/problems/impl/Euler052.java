@@ -4,6 +4,8 @@ import problems.Problem;
 
 import java.util.Arrays;
 
+import static problems.EulerLib.isAnagram;
+
 /**
  * Problem 52:
  * https://projecteuler.net/problem=52
@@ -12,8 +14,8 @@ import java.util.Arrays;
  */
 public class Euler052 implements Problem {
 
-    // I actually knew this one off-hand, 1/7 is quite familiar
-    // Anyway, super simple brute force anagram check
+    // I actually knew this one off-hand, 1/7 is quite familiar.
+    // Anyway, super simple brute force anagram check.
 
     @Override
     public String solve() {
@@ -29,21 +31,5 @@ public class Euler052 implements Problem {
                 return String.valueOf(i);
         }
         return null;
-    }
-
-    /**
-     * Returns whether a and b are anagrams of each other
-     * @param a some positive integer
-     * @param b some positive integer
-     * @return a and b are anagrams of each other
-     */
-    private boolean isAnagram(int a, int b) {
-        char[] aStr = String.valueOf(a).toCharArray();
-        Arrays.sort(aStr);
-
-        char[] bStr = String.valueOf(b).toCharArray();
-        Arrays.sort(bStr);
-
-        return Arrays.equals(aStr, bStr);
     }
 }

@@ -5,6 +5,8 @@ import problems.Problem;
 import java.util.HashSet;
 import java.util.Set;
 
+import static problems.EulerLib.primesTo;
+
 /**
  * Problem 46:
  * https://projecteuler.net/problem=46
@@ -25,7 +27,7 @@ public class Euler046 implements Problem {
             possibilities.add(i);
         }
 
-        boolean[] primes = sieveTo(LIMIT);
+        boolean[] primes = primesTo(LIMIT);
 
         // Remove primes
         for (int i = 3; i < LIMIT; i += 2) {
@@ -50,28 +52,4 @@ public class Euler046 implements Problem {
         return String.valueOf(smallest);
     }
 
-    /**
-     * Generate an array of booleans where value represents if index is prime
-     * @param x largest value in sieve
-     * @return array of booleans
-     */
-    private boolean[] sieveTo(int x) {
-
-        // Simple sieve implementation
-        boolean[] isPrime = new boolean[x + 1];
-
-        for (int i = 2; i <= x; i++) {
-            isPrime[i] = true;
-        }
-
-        for (int i = 2; i <= x; i++) {
-            if (isPrime[i]) {
-                for (int j = 2; j * i <= x; j++) {
-                    isPrime[j * i] = false;
-                }
-            }
-        }
-
-        return isPrime;
-    }
 }

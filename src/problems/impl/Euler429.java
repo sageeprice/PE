@@ -2,6 +2,8 @@ package problems.impl;
 
 import problems.Problem;
 
+import static problems.EulerLib.primesTo;
+
 public class Euler429 implements Problem {
 
     private static final int CAP = 100_000_000;
@@ -9,7 +11,7 @@ public class Euler429 implements Problem {
 
     @Override
     public String solve() {
-        boolean[] isPrime = sieveTo(CAP);
+        boolean[] isPrime = primesTo(CAP);
         long product = 1;
         long n;
         long pow;
@@ -38,26 +40,4 @@ public class Euler429 implements Problem {
         }
         return count;
     }
-
-    // Sieve of Eratosthenes implementation:
-    // initially assume all odds are prime, then eliminate multiples of
-    // new primes as they are discovered
-    private static boolean[] sieveTo(int n) {
-        boolean[] sieve = new boolean[n + 1];
-        if (n >= 2) {
-            sieve[2] = true;
-        }
-        for (int i = 3; i <= n; i+=2) {
-            sieve[i] = true;
-        }
-        for (int i = 3; i <= Math.sqrt(n); i+= 2) {
-            if (sieve[i]) {
-                for (int j = i * i; j <= n; j += i * 2) {
-                    sieve[j] = false;
-                }
-            }
-        }
-        return sieve;
-    }
-
 }

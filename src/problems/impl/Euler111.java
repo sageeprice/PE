@@ -12,6 +12,8 @@ import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.LongStream;
 
+import static problems.EulerLib.primesTo;
+
 /**
  * Just generate the set of numbers worth checking, starting from the same
  * digit 9 times, then 8 times, and so on until solutions have been found for
@@ -27,7 +29,7 @@ public class Euler111 implements Problem {
   public String solve() {
 
     // Generate list of primes to use for checking high primes.
-    boolean[] sieve = sieveTo(100_000);
+    boolean[] sieve = primesTo(100_000);
     List<Integer> lowPrimes = new ArrayList<>();
     for (int i = 2; i < sieve.length; i++) {
       if (sieve[i]) {
@@ -122,34 +124,4 @@ public class Euler111 implements Problem {
     return true;
   }
 
-
-  private static boolean[] sieveTo(int n) {
-    boolean[] sieve = new boolean[n+1];
-    // initial conditions
-    if (n >= 2) {
-      sieve[2] = true;
-    }
-    // only need to check odds
-    for (int i = 3; i <= n; i+=2) {
-      sieve[i] = true;
-    }
-    // Composites larger than sqrt(n) must have a smaller factor, and are thus eliminated
-    // already. Therefore we need only proceed to check  values up through sqrt(n)
-    for (int i = 3; i <= Math.sqrt(n); i+= 2) {
-      if (sieve[i]) {
-        /*
-         * Since you'll forget this Sage:
-         *  - if it's less than i*i more than i, it'll be covered by a smaller prime
-         *  - all primes > 2 are odd, so only need to check every other above i*i
-         *  One improvement that could be made: technically only need to check
-         *  of the form 6k+1 and 6k-1 (k an int), as 6k+3 is multiple of 3.
-         */
-        for (int j = i*i; j <= n; j += i * 2) {
-          sieve[j] = false;
-        }
-      }
-    }
-
-    return sieve;
-  }
 }

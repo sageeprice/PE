@@ -5,6 +5,8 @@ import problems.Problem;
 import java.util.ArrayList;
 import java.util.List;
 
+import static problems.EulerLib.primesTo;
+
 /**
  * Problem 87:
  * https://projecteuler.net/problem=87
@@ -18,7 +20,7 @@ public class Euler087 implements Problem {
     @Override
     public String solve() {
 
-        boolean[] sieve = sieveTo(50000000);
+        boolean[] sieve = primesTo(50000000);
 
         List<Long> squares = new ArrayList<>();
         List<Long> cubes = new ArrayList<>();
@@ -60,30 +62,5 @@ public class Euler087 implements Problem {
         }
 
         return String.valueOf(count);
-    }
-
-    /**
-     * Generate an array of booleans where value represents if index is prime
-     * @param x largest value in sieve
-     * @return array of booleans
-     */
-    private boolean[] sieveTo(int x) {
-
-        // Simple sieve implementation
-        boolean[] isPrime = new boolean[x + 1];
-
-        for (int i = 2; i <= x; i++) {
-            isPrime[i] = true;
-        }
-
-        for (int i = 2; i <= x; i++) {
-            if (isPrime[i]) {
-                for (int j = 2; j * i <= x; j++) {
-                    isPrime[j * i] = false;
-                }
-            }
-        }
-
-        return isPrime;
     }
 }
