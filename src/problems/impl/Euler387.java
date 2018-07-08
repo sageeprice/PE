@@ -5,6 +5,8 @@ import problems.Problem;
 import java.util.ArrayList;
 import java.util.List;
 
+import static problems.EulerLib.isPrime;
+
 /**
  * Quick and easy. Better to generate them than to check every possibility.
  * A tad slow, 2 seconds.
@@ -39,17 +41,6 @@ public class Euler387 implements Problem {
         }
 
         return String.valueOf(strongSum);
-    }
-
-    /** Returns true iff x is prime. */
-    private static boolean isPrime(long x) {
-        if (x != 2 && x % 2 == 0)
-            return false;
-        for (long i = 3; i <= Math.sqrt(x); i += 2) {
-            if (x % i == 0)
-                return false;
-        }
-        return x != 1;
     }
 
     /** Returns the sum of the input's digits. */

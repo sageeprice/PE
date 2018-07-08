@@ -4,6 +4,8 @@ import problems.Problem;
 
 import java.util.Arrays;
 
+import static problems.EulerLib.isPrime;
+
 /**
  * Problem 41:
  * https://projecteuler.net/problem=41
@@ -33,25 +35,6 @@ public class Euler041 implements Problem {
             }
         }
         return null;
-    }
-
-    /**
-     * Returns whether x is prime or not
-     * @param x
-     * @return is x prime
-     */
-    private boolean isPrime(int x) {
-
-        if (x % 2 == 0) {
-            return false;
-        }
-
-        for (int i = 3; i <= Math.sqrt(x); i += 2) {
-            if (x % i == 0) {
-                return false;
-            }
-        }
-        return true;
     }
 
     /**

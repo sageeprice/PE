@@ -43,6 +43,19 @@ public final class EulerLib {
     return sieve;
   }
 
+  /** Returns true IFF {@code x} is a prime number. */
+  public static boolean isPrime(long x) {
+    if (2 >= x || 0 == x % 2) {
+      return false;
+    }
+    for (int i = 3; i <= Math.sqrt(x); i += 2) {
+      if (x % i == 0) {
+        return false;
+      }
+    }
+    return true;
+  }
+
   /** Returns true IFF {@code x} is a permutation of {@code y}. */
   public static boolean isPermutation(long x, long y) {
     char[] xStr = String.valueOf(x).toCharArray();

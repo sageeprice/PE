@@ -4,6 +4,8 @@ import problems.Problem;
 
 import java.math.BigInteger;
 
+import static problems.EulerLib.isPrime;
+
 /**
  * Created by Sage on 10/16/16.
  */
@@ -25,16 +27,6 @@ public class Euler026 implements Problem {
             }
         }
         return null;
-    }
-
-    private boolean isPrime(int x) {
-
-        for (int i = 2; i <= Math.sqrt(x); i++) {
-            if (x % i == 0) {
-                return false;
-            }
-        }
-        return true;
     }
 
     /**

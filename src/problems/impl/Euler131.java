@@ -2,6 +2,8 @@ package problems.impl;
 
 import problems.Problem;
 
+import static problems.EulerLib.isPrime;
+
 /**
  * The prime in question must be a difference of cubes. Furthermore, factoring
  * the difference of cubes shows that it must be the difference of consecutive
@@ -26,21 +28,5 @@ public class Euler131 implements Problem {
                 answerCount++;
         }
         return String.valueOf(answerCount);
-    }
-
-    /**
-     * Returns true iff x is prime (or 1, but that won't happen).
-     * Slow, but who cares given the size of numbers here.
-     */
-    private static boolean isPrime(int x) {
-        if (x % 2 == 0) {
-            return false;
-        }
-        for (int i = 3; i < Math.sqrt(x+1); i += 2) {
-            if (x % i == 0) {
-                return false;
-            }
-        }
-        return true;
     }
 }

@@ -5,6 +5,8 @@ import problems.Problem;
 import java.util.ArrayList;
 import java.util.List;
 
+import static problems.EulerLib.isPrime;
+
 /**
  * Created by Sage on 9/15/2015.
  *
@@ -49,21 +51,12 @@ public class Euler077 implements Problem {
     }
 
     private static int getPrimeAfter(int p) {
+        // Hilariously slow.
         // Obviously we assume p is a prime != 2.
         p += 2;
         while (!isPrime(p)) {
             p += 2;
         }
         return p;
-    }
-
-    private static boolean isPrime(long p) {
-        long limit = (long) Math.sqrt(p);
-        for (long i = 3; i <= limit; i += 2) {
-            if (p % i == 0) {
-                return false;
-            }
-        }
-        return true;
     }
 }

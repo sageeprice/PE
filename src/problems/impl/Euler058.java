@@ -2,6 +2,8 @@ package problems.impl;
 
 import problems.Problem;
 
+import static problems.EulerLib.isPrime;
+
 /**
  * Problem 59:
  * https://projecteuler.net/problem=58
@@ -39,18 +41,5 @@ public class Euler058 implements Problem {
 
         // subtract one since we went to the next ring
         return String.valueOf(jump - 1);
-    }
-
-    // Naive prime check
-    private boolean isPrime(int x) {
-        // check if even
-        if (x % 2 == 0)
-            return false;
-        // check all odds for simplicity
-        for (int i = 3; i <= Math.sqrt(x) + 1; i += 2) {
-            if (x % i == 0)
-                return false;
-        }
-        return true;
     }
 }

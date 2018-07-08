@@ -2,6 +2,8 @@ package problems.impl;
 
 import problems.Problem;
 
+import static problems.EulerLib.isPrime;
+
 /**
  * Created by Sage on 9/15/2015.
  *
@@ -50,15 +52,5 @@ public class Euler243 implements Problem {
             p += 2;
         }
         return p;
-    }
-
-    private static boolean isPrime(long p) {
-        long limit = (long) Math.sqrt(p);
-        for (long i = 3; i <= limit; i += 2) {
-            if (p % i == 0) {
-                return false;
-            }
-        }
-        return true;
     }
 }
