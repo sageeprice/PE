@@ -26,6 +26,7 @@ import problems.impl.Euler510;
 import problems.impl.Euler293;
 import problems.impl.Euler250;
 import problems.impl.Euler193;
+import problems.impl.Euler216;
 
 import static org.junit.Assert.assertEquals;
 
@@ -68,6 +69,8 @@ public class EulerSlowTests {
     assertEquals(new Euler193().solve(), "684465067343069");
     // ~5 seconds.
     assertEquals(new Euler206().solve(), "1389019170");
+    // <20 seconds
+    assertEquals(new Euler216().solve(), "5437849");
     // 2 seconds.
     assertEquals(new Euler249().solve(), "9275262564250418");
     // 1.5 seconds.
