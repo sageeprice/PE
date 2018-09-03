@@ -43,6 +43,30 @@ public final class EulerLib {
     return sieve;
   }
 
+  /**
+   * Given a populated boolean array representing a Sieve of Eratosthenes, returns an array
+   * containing all primes within the array.
+   *
+   * <p>Note: meant to be used with {@link #primesTo}, e.g.:
+   * <code>toIntegerPrimes(primesTo(n))</code>.
+   */
+  public static int[] toIntegerPrimes(boolean[] sieve) {
+    int pCount = 0;
+    for (int i = 2; i < sieve.length; i++) {
+      if (sieve[i]) {
+        pCount++;
+      }
+    }
+    int[] hammingPrimes = new int[pCount];
+    int pIndex = 0;
+    for (int i = 0; i < sieve.length; i++) {
+      if (sieve[i]) {
+        hammingPrimes[pIndex++] = i;
+      }
+    }
+    return hammingPrimes;
+  }
+
   /** Returns true IFF {@code x} is a prime number. */
   public static boolean isPrime(long x) {
     if (2 >= x || 0 == x % 2) {
